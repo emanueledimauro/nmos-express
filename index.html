@@ -41,6 +41,12 @@
 
 				<!--<label for="mediaSelect">Média :</label>-->
 				&nbsp;&nbsp;
+								<button id="snapshotSalvoBtn" type="button" onclick="openSalvoSnapshotModal()"
+					class="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white rounded text-xs font-medium flex items-center gap-1.5 shadow-sm transition-colors"
+					title="Enregistrer l'état de commutation sous forme de salvo" data-i18n-title="snapshot_salvo_btn_title">
+					<i class="fas fa-camera text-xs"></i>
+					<span data-i18n="snapshot_salvo_btn">Salvo</span>
+				</button>
 				<select id="mediaSelect" class="mini-input !w-auto !py-1 !text-xs" onchange="changeType();">
 					<option value="video" selected data-i18n="video">Vidéo</option>
 					<option value="audio" data-i18n="audio">Audio</option>
@@ -109,8 +115,86 @@
 				data-i18n="system_logs">SYSTEM LOGS</span> </div>
 	</div>
 
-	<script src="lib/js/index.js?v=1.0"></script>
+	<script src="lib/js/index.js?v=1.1"></script>
 	<BR>
+	<!-- Modal Snapshot Salvo -->
+	<div id="salvoSnapshotModal"
+		class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm transition-opacity duration-200">
+		<div class="bg-white rounded-xl shadow-2xl border border-gray-200 max-w-md w-full overflow-hidden flex flex-col max-h-[90vh]"
+			onclick="event.stopPropagation()">
+			
+			<!-- Header -->
+			<div class="px-5 py-3.5 bg-gradient-to-r from-amber-500 to-amber-600 text-white flex items-center justify-between">
+				<div class="flex items-center gap-2">
+					<i class="fas fa-camera text-base"></i>
+					<h3 class="font-bold text-sm tracking-wide" data-i18n="snapshot_modal_title">Enregistrer l'état de commutation</h3>
+				</div>
+				<button type="button" onclick="closeSalvoSnapshotModal()"
+					class="text-white/80 hover:text-white w-7 h-7 flex items-center justify-center rounded-full hover:bg-black/10 transition-colors">
+					<i class="fas fa-times text-sm"></i>
+				</button>
+			</div>
+
+			<!-- Body -->
+			<div class="p-5 space-y-4 overflow-y-auto text-xs text-gray-700">
+				
+				<!-- Salvo Name Input -->
+				<div>
+					<label class="block font-semibold text-gray-700 mb-1" data-i18n="snapshot_name_label">Nom du salvo / workflow</label>
+					<input type="text" id="snapshotSalvoName" class="mini-input !w-full !py-1.5 !text-xs font-medium"
+						placeholder="Ex: Direct PGM, Plateau 1 matin..." data-i18n-placeholder="snapshot_name_placeholder">
+				</div>
+
+				<!-- Scope Preview: Open Categories -->
+				<div class="space-y-3 bg-gray-50 p-3 rounded-lg border border-gray-200">
+					<!-- Sources ouvertes -->
+					<div>
+						<div class="text-[11px] font-semibold text-blue-900 mb-1.5 flex items-center gap-1.5">
+							<i class="fas fa-arrow-right-from-bracket text-blue-600"></i>
+							<span data-i18n="snapshot_open_sources">Catégories sources ouvertes :</span>
+						</div>
+						<div id="snapshotOpenSourcesList" class="flex flex-wrap gap-1.5 min-h-[22px]">
+							<!-- Badges injected dynamically by JS -->
+						</div>
+					</div>
+
+					<!-- Destinations ouvertes -->
+					<div>
+						<div class="text-[11px] font-semibold text-purple-900 mb-1.5 flex items-center gap-1.5">
+							<i class="fas fa-arrow-right-to-bracket text-purple-600"></i>
+							<span data-i18n="snapshot_open_destinations">Catégories destinations ouvertes :</span>
+						</div>
+						<div id="snapshotOpenDestsList" class="flex flex-wrap gap-1.5 min-h-[22px]">
+							<!-- Badges injected dynamically by JS -->
+						</div>
+					</div>
+				</div>
+
+				<!-- Dynamic Route Count Badge / Alert -->
+				<div id="snapshotCountBadge" class="p-2.5 rounded-lg border flex items-center gap-2 font-medium transition-colors">
+					<i id="snapshotCountIcon" class="fas fa-info-circle"></i>
+					<span id="snapshotCountText">0 commutation(s) active(s) entre les catégories ouvertes</span>
+				</div>
+
+			</div>
+
+			<!-- Footer Actions -->
+			<div class="px-5 py-3 bg-gray-50 border-t border-gray-200 flex items-center justify-end gap-2">
+				<button type="button" onclick="closeSalvoSnapshotModal()"
+					class="px-4 py-1.5 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100 font-medium text-xs transition-colors"
+					data-i18n="snapshot_cancel_btn">
+					Annuler
+				</button>
+				<button type="button" id="snapshotSaveBtn" onclick="saveSalvoSnapshot()"
+					class="px-4 py-1.5 bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white rounded-md font-medium text-xs flex items-center gap-1.5 shadow-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+					<i class="fas fa-save"></i>
+					<span data-i18n="snapshot_save_btn">Enregistrer le salvo</span>
+				</button>
+			</div>
+
+		</div>
+	</div>
+
 </body>
 
 </html>
