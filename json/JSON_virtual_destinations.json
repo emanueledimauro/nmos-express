@@ -153,7 +153,7 @@
         "video_receiver": "df211e90-b314-50f6-911a-99ec3d3cd939",
         "audio_receiver": "0887f74b-62d0-5b5f-9cc9-36de3e3d34fe",
         "data_receiver": null,
-        "virtual_sender_id": "camera11"
+        "virtual_sender_id": "camera03"
     },
     {
         "id": "ecran04",
