@@ -16,9 +16,9 @@
 
 ## 📌 Overview
 
-**NMOS Express** is an open-source, air-gapped web application designed for broadcast facilities, production trucks (OB vans), live studios, and testing laboratories operating SMPTE ST 2110 IP networks.
+**NMOS Express** is an open-source, air-gapped web application designed for broadcast facilities, live studios, and testing laboratories operating SMPTE ST 2110 IP networks.
 
-It provides a responsive, intuitive interface to discover NMOS nodes, manage operational labels, route elementary streams via visual graphs or matrix grids, orchestrate multi-essence virtual devices, automate workflow salvos, and simulate full NMOS endpoints without requiring physical hardware.
+It provides a responsive, intuitive interface to discover NMOS nodes, manage operational labels, route elementary streams via visual graphs or matrix grids, orchestrate multi-essence virtual devices, automate workflow salvos.
 
 ### Key Highlights
 

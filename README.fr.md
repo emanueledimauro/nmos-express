@@ -16,9 +16,9 @@
 
 ## 📌 Présentation
 
-**NMOS Express** est une application web open source conçue pour les régies de production, cars régie (OB vans), studios live et laboratoires utilisant des infrastructures audiovisuelles sur IP **SMPTE ST 2110**.
+**NMOS Express** est une application web open source conçue pour les régies de production, studios live et laboratoires utilisant des infrastructures audiovisuelles sur IP **SMPTE ST 2110**.
 
-Elle offre une interface intuitive et réactive pour découvrir les équipements NMOS, gérer des étiquettes d'exploitation personnalisées, commuter des flux vidéo/audio/data via un graphe visuel ou une grille matricielle, orchestrer des équipements virtuels multi-essences, automatiser des salves de commutation et simuler des nœuds NMOS réalistes sans aucun matériel physique.
+Elle offre une interface intuitive et réactive pour découvrir les équipements NMOS, gérer des étiquettes d'exploitation personnalisées, commuter des flux vidéo/audio/data via un graphe visuel ou une grille matricielle, orchestrer des équipements virtuels multi-essences, automatiser des salves de commutation.
 
 ### Points forts
 
