@@ -9,7 +9,7 @@
 header('Content-Type: application/json; charset=utf-8');
 
 $ACTION = isset($_GET['action']) ? $_GET['action'] : '';
-$FILE = __DIR__ . DIRECTORY_SEPARATOR . 'JSON_workflows.json';
+$FILE = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'json' . DIRECTORY_SEPARATOR . 'JSON_workflows.json';
 
 function respond($ok, $payload = []) {
   echo json_encode(array_merge(['ok' => $ok], $payload), JSON_PRETTY_PRINT);

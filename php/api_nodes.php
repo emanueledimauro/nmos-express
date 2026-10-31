@@ -1,7 +1,7 @@
 <?php
 header('Content-Type: application/json');
 
-$jsonFile = 'config.nodes.json';
+$jsonFile = dirname(__DIR__) . '/json/config.nodes.json';
 
 // Helper to read JSON
 function readJsonNodes($file)

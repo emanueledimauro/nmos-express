@@ -8,13 +8,13 @@
 ini_set('display_errors', '0');
 error_reporting(E_ALL);
 
-define('INPUT_FILE',  __DIR__ . '/config.nodes.json');
-define('OUTPUT_DIR',  __DIR__ . '/');
+define('INPUT_FILE',  dirname(__DIR__) . '/json/config.nodes.json');
+define('OUTPUT_DIR',  dirname(__DIR__) . '/json');
 define('CONNECT_TIMEOUT_SEC', 2);
 define('TIMEOUT_SEC', 3);
 
-define('SENDERS_LABS_FILE',   __DIR__ . '/JSON_senders_labs.json');
-define('RECEIVERS_LABS_FILE', __DIR__ . '/JSON_receivers_labs.json');
+define('SENDERS_LABS_FILE',   dirname(__DIR__) . '/json/JSON_senders_labs.json');
+define('RECEIVERS_LABS_FILE', dirname(__DIR__) . '/json/JSON_receivers_labs.json');
 
 function urlJoin($base, $suffix) {
     return rtrim($base, '/') . '/' . ltrim($suffix, '/');

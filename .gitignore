@@ -5,7 +5,7 @@
 # Private network topologies & physical equipment backups
 # Prevents exposing real facility IP addresses and private serials
 *.real.json
-json/
+json-test/
 
 # Scratch scripts, temporary files & backups
 scratch/

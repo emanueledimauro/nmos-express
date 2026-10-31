@@ -134,16 +134,16 @@ Centre de gestion et de diagnostic de l'ensemble des équipements NMOS connecté
 ```
 nmos-express/
 ├── images/                  # Logos et icônes de l'application
+├── json/                    # Fichiers d'état et configurations (nœuds, flux, profils, i18n)
 ├── lib/
 │   ├── css/                 # Feuilles de style locales (Tailwind, FontAwesome, modal.css, etc.)
 │   └── js/                  # Contrôleurs JavaScript, chargeur de menu, gestionnaire modale/toast, i18n
-├── config.nodes.json        # Liste des URL d'API des nœuds NMOS déclarés
-├── config.profiles.json     # Définition des profils SDP acceptés (SMPTE ST 2110-20/30/40)
-├── JSON_*.json              # Fichiers d'état locaux (émetteurs, récepteurs, virtuels, workflows)
-├── api_*.php                # Endpoints légers en PHP (communication cURL vers IS-04 et IS-05)
-├── nmos-update.php          # Analyseur / crawler de nœuds et synchroniseur de cache
-├── sdp-lib.php              # Parseur SDP et moteur de vérification des profils
-└── nmos_simulator.py        # Simulateur multi-nœuds autonome en Python
+├── php/                     # Endpoints d'API, moteur de commutation et crawler IS-04/IS-05
+├── *.html                   # Vues d'interface (matrice, graphe, étiquettes, virtuels, workflows, pupitre, nœuds)
+├── nmos_simulator.py        # Simulateur multi-nœuds autonome en Python
+├── README.md                # Documentation (Anglais)
+├── README.fr.md             # Documentation (Français)
+└── LICENSE                  # Licence MIT
 ```
 
 ---

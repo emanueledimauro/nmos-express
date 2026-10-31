@@ -1,12 +1,5 @@
 [
     {
-        "id": "755f521c-9a7c-58da-bc8e-971ff91662a5",
-        "label": "SNP-GATEWAY11",
-        "description": "Simulated NMOS Node SNP-GATEWAY11",
-        "node_api": "http://127.0.0.1:8001/x-nmos/node/v1.3/",
-        "node_name": "SNP-GATEWAY"
-    },
-    {
         "id": "c820e143-843c-530f-a0b5-5d6026e1770b",
         "label": "SNP-GATEWAY-MONITOR1",
         "description": "Simulated NMOS Node SNP-GATEWAY-MONITOR1",
@@ -33,5 +26,12 @@
         "description": "Simulated NMOS Node NEURON-COLOR ",
         "node_api": "http://127.0.0.1:8005/x-nmos/node/v1.3/",
         "node_name": "NEURON-COLOR "
+    },
+    {
+        "id": "755f521c-9a7c-58da-bc8e-971ff91662a5",
+        "label": "SNP-GATEWAY11",
+        "description": "Simulated NMOS Node SNP-GATEWAY11",
+        "node_api": "http://127.0.0.1:8001/x-nmos/node/v1.3/",
+        "node_name": "SNP-GATEWAY"
     }
 ]

@@ -23,13 +23,13 @@ ini_set('display_errors', '0');
 
 // --------- FILES ----------
 $FILES = array(
-  'nodes'          => __DIR__ . '/JSON_nodes_enriched.json',
-  'devices'        => __DIR__ . '/JSON_devices.json',
-  'senders'        => __DIR__ . '/JSON_senders.json',
-  'receivers'      => __DIR__ . '/JSON_receivers.json',
-  'senders_labs'   => __DIR__ . '/JSON_senders_labs.json',
-  'receivers_labs' => __DIR__ . '/JSON_receivers_labs.json',
-  'profiles'       => __DIR__ . '/config.profiles.json',
+    'nodes'          => dirname(__DIR__) . '/json/JSON_nodes_enriched.json',
+    'devices'        => dirname(__DIR__) . '/json/JSON_devices.json',
+    'senders'        => dirname(__DIR__) . '/json/JSON_senders.json',
+    'receivers'      => dirname(__DIR__) . '/json/JSON_receivers.json',
+    'senders_labs'   => dirname(__DIR__) . '/json/JSON_senders_labs.json',
+    'receivers_labs' => dirname(__DIR__) . '/json/JSON_receivers_labs.json',
+    'profiles'       => dirname(__DIR__) . '/json/config.profiles.json',
 );
 
 $GLOBALS['FILES'] = $FILES;

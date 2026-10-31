@@ -134,16 +134,16 @@ The central management and diagnostic hub for all connected NMOS equipment.
 ```
 nmos-express/
 ├── images/                  # Application branding & icons
+├── json/                    # State & configuration caches (nodes, senders, receivers, profiles, i18n)
 ├── lib/
 │   ├── css/                 # Offline stylesheets (Tailwind, FontAwesome, modal.css, page styles)
 │   └── js/                  # Frontend controllers, menu loader, modal/toast engine, i18n
-├── config.nodes.json        # Configured NMOS Node API endpoints
-├── config.profiles.json     # Recognized SDP profiles (SMPTE ST 2110-20/30/40)
-├── JSON_*.json              # Local state caches (senders, receivers, virtual devices, workflows)
-├── api_*.php                # Lightweight backend endpoints (curl-based IS-04 / IS-05 communication)
-├── nmos-update.php          # Node crawler & cache synchronizer
-├── sdp-lib.php              # Real-time SDP parser & profile compatibility validator
-└── nmos_simulator.py        # Autonomous multi-node Python simulator
+├── php/                     # Backend APIs, switch engines & IS-04/IS-05 crawler
+├── *.html                   # Application UI views (matrix, graph, labels, virtual, workflows, panel, nodes)
+├── nmos_simulator.py        # Autonomous multi-node Python simulator
+├── README.md                # Documentation (English)
+├── README.fr.md             # Documentation (Français)
+└── LICENSE                  # MIT License
 ```
 
 ---

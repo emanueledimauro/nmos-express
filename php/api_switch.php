@@ -23,7 +23,7 @@ function writeJsonFile($path, $data) {
 }
 
 function updateReceiverSubscriptionLocal($receiverId, $senderId) {
-    $path = __DIR__ . '/JSON_receivers.json';
+    $path = dirname(__DIR__) . '/json/JSON_receivers.json';
     $receivers = readJsonFile($path, array());
 
     for ($i=0; $i<count($receivers); $i++) {
@@ -122,8 +122,8 @@ try {
     $senderId = $body['sender_id'];
     $receiverId = $body['receiver_id'];
 
-    $senders = readJsonFile(__DIR__.'/JSON_senders.json', array());
-    $receivers = readJsonFile(__DIR__.'/JSON_receivers.json', array());
+    $senders = readJsonFile(dirname(__DIR__) . '/json/JSON_senders.json', array());
+    $receivers = readJsonFile(dirname(__DIR__) . '/json/JSON_receivers.json', array());
 
     $sender = null;
     foreach ($senders as $s) {

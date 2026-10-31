@@ -1,5 +1,17 @@
 [
     {
+        "id": "652051fb-7426-5391-861a-51982616265d",
+        "label": "NEURON-COLOR-device1-TxVideo1",
+        "custom_label": null,
+        "equipement": "NEURON-COLOR ",
+        "mediatype": "video",
+        "device_id": "9324ab9d-fe31-5054-a792-0f482bcfeed1",
+        "device_label": "NEURON-COLOR-device1",
+        "node_id": "75c14bec-caed-5ded-bd55-958f23da5b0c",
+        "sdp_href": "http://127.0.0.1:8005/sdp/652051fb-7426-5391-861a-51982616265d",
+        "control_href": "http://127.0.0.1:8005/x-nmos/connection/v1.1/single/senders/652051fb-7426-5391-861a-51982616265d/"
+    },
+    {
         "id": "1d365900-2be2-5931-a235-161f4b0afc82",
         "label": "SNP-GATEWAY1-device1-TxVideo1",
         "custom_label": "camera14",
@@ -1150,17 +1162,5 @@
         "node_id": "755f521c-9a7c-58da-bc8e-971ff91662a5",
         "sdp_href": "http://127.0.0.1:8001/sdp/46b29eab-95f2-566b-b6c4-1bed14a75387",
         "control_href": "http://127.0.0.1:8001/x-nmos/connection/v1.1/single/senders/46b29eab-95f2-566b-b6c4-1bed14a75387/"
-    },
-    {
-        "id": "652051fb-7426-5391-861a-51982616265d",
-        "label": "NEURON-COLOR-device1-TxVideo1",
-        "custom_label": null,
-        "equipement": "NEURON-COLOR ",
-        "mediatype": "video",
-        "device_id": "9324ab9d-fe31-5054-a792-0f482bcfeed1",
-        "device_label": "NEURON-COLOR-device1",
-        "node_id": "75c14bec-caed-5ded-bd55-958f23da5b0c",
-        "sdp_href": "http://127.0.0.1:8005/sdp/652051fb-7426-5391-861a-51982616265d",
-        "control_href": "http://127.0.0.1:8005/x-nmos/connection/v1.1/single/senders/652051fb-7426-5391-861a-51982616265d/"
     }
 ]

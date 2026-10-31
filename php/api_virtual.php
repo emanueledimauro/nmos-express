@@ -13,8 +13,8 @@ ini_set('display_errors', '0');
 
 // ---------- FILES ----------
 $FILES = array(
-  'sources'      => __DIR__ . '/JSON_virtual_sources.json',
-  'destinations' => __DIR__ . '/JSON_virtual_destinations.json'
+    'sources'      => dirname(__DIR__) . '/json/JSON_virtual_sources.json',
+    'destinations' => dirname(__DIR__) . '/json/JSON_virtual_destinations.json'
 );
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';

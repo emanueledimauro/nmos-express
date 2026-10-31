@@ -27,15 +27,16 @@ if sys.platform == "win32":
         pass
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-CONFIG_NODES_PATH = os.path.join(SCRIPT_DIR, 'config.nodes.json')
-CONFIG_NODES_BAK  = os.path.join(SCRIPT_DIR, 'config.nodes.real.json')
+JSON_DIR   = os.path.join(SCRIPT_DIR, 'json')
+CONFIG_NODES_PATH = os.path.join(JSON_DIR, 'config.nodes.json')
+CONFIG_NODES_BAK  = os.path.join(JSON_DIR, 'config.nodes.real.json')
 
-JSON_DEVICES_PATH   = os.path.join(SCRIPT_DIR, 'JSON_devices.json')
-JSON_SENDERS_PATH   = os.path.join(SCRIPT_DIR, 'JSON_senders.json')
-JSON_SENDERS_BAK    = os.path.join(SCRIPT_DIR, 'JSON_senders.real.json')
-JSON_RECEIVERS_PATH = os.path.join(SCRIPT_DIR, 'JSON_receivers.json')
-JSON_RECEIVERS_BAK  = os.path.join(SCRIPT_DIR, 'JSON_receivers.real.json')
-JSON_ENRICHED_PATH  = os.path.join(SCRIPT_DIR, 'JSON_nodes_enriched.json')
+JSON_DEVICES_PATH   = os.path.join(JSON_DIR, 'JSON_devices.json')
+JSON_SENDERS_PATH   = os.path.join(JSON_DIR, 'JSON_senders.json')
+JSON_SENDERS_BAK    = os.path.join(JSON_DIR, 'JSON_senders.real.json')
+JSON_RECEIVERS_PATH = os.path.join(JSON_DIR, 'JSON_receivers.json')
+JSON_RECEIVERS_BAK  = os.path.join(JSON_DIR, 'JSON_receivers.real.json')
+JSON_ENRICHED_PATH  = os.path.join(JSON_DIR, 'JSON_nodes_enriched.json')
 
 # Ports attribués aux 5 équipements par défaut
 DEFAULT_NODES_MAPPING = [
