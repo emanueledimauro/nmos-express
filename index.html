@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title data-i18n="page_title">Matrice de Commutation Groupée</title>
+
+	<script>
+		tailwind = { config: {} };
+	</script>
+	<script src="lib/js/tailwind.js"></script>
+	<script src="lib/js/jquery/jquery.min.js"></script>
+
+
+	<!-- Font Awesome local (offline) -->
+	<link href="lib/css/fontawesome/css/all.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="lib/css/index.css?v=1.0">
+
+	<script src="lib/js/i18n.js"></script>
+    <script src="lib/js/modal.js?v=1.0"></script>
+	<script src="lib/js/menu.js?v=1.0"></script>
+    <link rel="stylesheet" href="lib/css/modal.css?v=1.0">
+</head>
+
+<body class="bg-gray-50 text-gray-800 h-screen flex flex-col p-6 font-sans">
+
+	<header class="mb-4 flex justify-between items-center max-w-[100%] mx-auto w-full">
+		<div>
+			<h1 class="text-xl font-bold text-gray-900">
+				<!--<i class="fas fa-layer-group mr-2 text-blue-600"></i>Matrice Groupée-->
+				<img src="images/logo-grid.png" style="height:50px">
+			</h1>
+		</div>
+
+		<div class="text-right text-xs text-gray-400 flex flex-col items-end gap-1">
+			<div class="flex items-center gap-1 relative">
+
+
+
+				<!--<label for="mediaSelect">Média :</label>-->
+				&nbsp;&nbsp;
+				<select id="mediaSelect" class="mini-input !w-auto !py-1 !text-xs" onchange="changeType();">
+					<option value="video" selected data-i18n="video">Vidéo</option>
+					<option value="audio" data-i18n="audio">Audio</option>
+					<option value="data" data-i18n="data">Data</option>
+					<option value="virtual" data-i18n="virtual">Virtual</option>
+				</select>
+
+
+				<button id="updateBtn"
+					class="ml-2 px-2 py-1 bg-blue-600 text-white rounded text-[11px] hover:bg-blue-700 flex items-center gap-1">
+					<i id="updateIcon" class="fas fa-sync-alt"></i>
+					<span id="updateText" data-i18n="nmos_update"></span>
+				</button>
+
+				<div id="menuContainer" class="relative"></div>
+
+			</div>
+			<!--
+            <label class="flex items-center gap-1 text-[10px] text-gray-500">
+                
+            </label>
+            <label class="flex items-center gap-1 text-[10px] text-gray-500">
+               
+            </label>
+			-->
+		</div>
+	</header>
+
+
+	<!-- Toolbar Workflow -->
+	<div class="mb-4 bg-white border border-gray-200 rounded-lg shadow-sm p-2 flex flex-wrap items-center gap-3">
+		<!-- Actions -->
+		<div class="flex items-center gap-1">
+			<button id="btnOpenGroups"
+				class="px-2 h-8 flex items-center gap-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors text-xs"
+				title="Ouvrir les groupes" data-i18n-title="open_group" onclick="expandAllGroups();">
+				<i class="fas fa-folder-open text-xs"></i><span data-i18n="open_group"></span>
+			</button>
+
+			<button id="btnCloseGroups"
+				class="hidden px-2 h-8 flex items-center gap-2 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors text-xs"
+				title="Fermer les groupes" data-i18n-title="close_group" onclick="collapseAllGroups();">
+				<i class="fas fa-folder-closed text-xs"></i><span data-i18n="close_group"></span>
+			</button>
+		</div>
+
+		<div id="selectionOptions" class="flex items-center gap-1 text-xs ml-auto"
+			style="margin-top:7px; margin-bottom:7px; margin-right:7px;">
+			&nbsp;<input id="toggleLabs" type="checkbox" checked>&nbsp; <div data-i18n="only_custom_labs"></div>
+			&nbsp;<input id="toggleActive" type="checkbox" checked>&nbsp; <div data-i18n="only_active"></div>
+		</div>
+	</div>
+
+
+
+	<div class="matrix-container shadow flex-grow bg-white mx-auto">
+
+		<table id="matrixTable"></table>
+		<div id="emptyHint" class="empty-hint hidden"></div>
+	</div>
+
+	<div class="fixed bottom-0 inset-x-0 z-50 mt-2 bg-gray-900 text-green-400 p-2 rounded-md shadow font-mono text-[10px] h-24 overflow-y-auto leading-tight max-w-[100%] mx-auto w-full"
+		status="close" id="consoleLog" style="height: 40px;">
+		<div class="border-b border-gray-700 pb-1 mb-1 text-gray-1000"><button onclick="toogleLog()"><i id="zoomLog"
+					class="fa fa-expand" style="font-size:14px;color:#FFFFFF"></i></button> &nbsp;>> <span
+				data-i18n="system_logs">SYSTEM LOGS</span> </div>
+	</div>
+
+	<script src="lib/js/index.js?v=1.0"></script>
+	<BR>
+</body>
+
+</html>

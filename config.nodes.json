@@ -1,0 +1,22 @@
+[
+    {
+        "node_api": "http://127.0.0.1:8001/x-nmos/node/v1.3/",
+        "node_name": "SNP-GATEWAY"
+    },
+    {
+        "node_api": "http://127.0.0.1:8002/x-nmos/node/v1.3/",
+        "node_name": "SNP-GATEWAY-MONITOR1"
+    },
+    {
+        "node_api": "http://127.0.0.1:8003/x-nmos/node/v1.3/",
+        "node_name": "RossRx01"
+    },
+    {
+        "node_api": "http://127.0.0.1:8004/x-nmos/node/v1.3/",
+        "node_name": "RossRx02"
+    },
+    {
+        "node_api": "http://127.0.0.1:8005/x-nmos/node/v1.3/",
+        "node_name": "NEURON-COLOR "
+    }
+]

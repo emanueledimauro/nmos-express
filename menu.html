@@ -1,0 +1,86 @@
+<!-- Hamburger Menu Button -->
+<button id="menuBtn"
+    class="w-9 h-9 flex items-center justify-center bg-gray-200 text-gray-600 rounded hover:bg-gray-300 focus:outline-none"
+    onclick="toggleMenu()">
+    <i class="fas fa-bars text-lg"></i>
+</button>
+
+<!-- Dropdown Menu (Hidden by default) -->
+<div id="dropdownMenu"
+    class="hidden absolute right-0 top-full mt-2 w-32 bg-white border border-gray-200 shadow-lg rounded-md p-2 z-50 flex flex-col gap-2">
+
+    <button id="gridBtn"
+        class="w-full px-2 py-1 bg-blue-100 text-gray-800 rounded text-[11px] hover:bg-blue-300 flex items-center justify-start gap-2">
+        <a href="index.html" class="text-gray-800 hover:text-gray-800 block w-full text-left"><i
+                class="fas fa-th w-4 text-center"></i>
+            <span id="gridManagement" data-i18n="menu_grid">Grid</span></a>
+    </button>
+
+    <button id="labelBtn"
+        class="w-full px-2 py-1 bg-blue-100 text-gray-800 rounded text-[11px] hover:bg-blue-300 flex items-center justify-start gap-2">
+        <a href="labels.html" class="text-gray-800 hover:text-gray-800 block w-full text-left">
+            <i id="labelIcon" class="fas fa-font w-4 text-center"></i>
+            <span id="labelManagement" data-i18n="menu_labels">Labels</span>
+        </a>
+    </button>
+
+    <button id="virtualBtn"
+        class="w-full px-2 py-1 bg-blue-100 text-gray-800 rounded text-[11px] hover:bg-blue-300 flex items-center justify-start gap-2">
+        <a href="virtual.html" class="text-gray-800 hover:text-gray-800 block w-full text-left">
+            <i id="virtualIcon" class="fas fa-external-link-alt w-4 text-center"></i>
+            <span id="virtualManagement" data-i18n="menu_virtual">Virtual</span>
+        </a>
+    </button>
+
+    <button id="graphBtn"
+        class="w-full px-2 py-1 bg-blue-100 text-gray-800 rounded text-[11px] hover:bg-blue-300 flex items-center justify-start gap-2">
+        <a href="nmos_graph.html" class="text-gray-800 hover:text-gray-800 block w-full text-left">
+            <i class="fas fa-chart-line w-4 text-center"></i>
+            <span id="graphManagement" data-i18n="menu_graph">Graph</span>
+        </a>
+    </button>
+
+    <button id="workflowBtn"
+        class="w-full px-2 py-1 bg-blue-100 text-gray-800 rounded text-[11px] hover:bg-blue-300 flex items-center justify-start gap-2">
+        <a href="workflow.html" class="text-gray-800 hover:text-gray-800 block w-full text-left">
+            <i class="fas fa-bolt w-4 text-center"></i>
+            <span id="workflowManagement" data-i18n="menu_salvos">Salvos</span>
+        </a>
+    </button>
+
+    <hr>
+
+    <button id="nodesBtn"
+        class="w-full px-2 py-1 bg-blue-100 text-gray-800 rounded text-[11px] hover:bg-blue-300 flex items-center justify-start gap-2">
+        <a href="nodes.html" class="text-gray-800 hover:text-gray-800 block w-full text-left">
+            <i class="fas fa-server w-4 text-center"></i>
+            <span id="nodesManagement" data-i18n="menu_nodes">Nodes</span>
+        </a>
+    </button>
+
+    <hr>
+
+    <button id="panelBtn"
+        class="w-full px-2 py-1 bg-black text-white rounded text-[11px] hover:bg-gray-700 flex items-center justify-start gap-2">
+        <a href="panel.html" target="_blank" class="text-white hover:text-white block w-full text-left">
+            <i class="fas fa-columns w-4 text-center"></i>
+            <span id="panelManagement" data-i18n="menu_panel">Panel</span>
+        </a>
+    </button>
+
+    <hr>
+
+    <button id="aboutMenuBtn" type="button" onclick="openAboutModal()"
+        class="w-full px-2 py-1 bg-gray-50 text-gray-700 rounded text-[11px] hover:bg-gray-200 flex items-center justify-start gap-2 transition-colors">
+        <i class="fas fa-info-circle w-4 text-center text-blue-600"></i>
+        <span id="aboutManagement" data-i18n="menu_about">À propos</span>
+    </button>
+
+    <hr>
+
+    <select id="langSelect" class="lang-select" title="Language" data-i18n-title="language">
+        <option value="fr">FR</option>
+        <option value="en">EN</option>
+        <option value="it">IT</option>
+    </select>
+</div>

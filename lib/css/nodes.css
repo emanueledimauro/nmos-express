@@ -1,0 +1,27 @@
+/**
+ * NMOS Express - Nodes Configuration (nodes.html)
+ */
+
+.mini-input {
+            font-size: 13px;
+            padding: 6px 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .mini-input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 1px #2563eb;
+        }
+
+        .lang-select {
+            font-size: 13px;
+            padding: 4px 6px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            background-color: #fff;
+            cursor: pointer;
+        }

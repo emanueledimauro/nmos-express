@@ -1,0 +1,58 @@
+[
+    {
+        "id": "wf_20261019_125357",
+        "description": "salvonissimo",
+        "created_at": "2026-10-19T10:53:57.359Z",
+        "items": [
+            {
+                "media": "video",
+                "sender_id": "1d365900-2be2-5931-a235-161f4b0afc82",
+                "receiver_id": "685000e0-82c2-56c8-b148-05ebc8a566c4",
+                "note": ""
+            },
+            {
+                "media": "video",
+                "sender_id": "7d0b0f97-af7a-57ad-83e8-068e5d74558e",
+                "receiver_id": "4f1be0b9-82c0-5367-9f7a-a8976fde35b7",
+                "note": ""
+            },
+            {
+                "media": "audio",
+                "sender_id": "f20153b0-88c4-5d06-a3b2-18c099953743",
+                "receiver_id": "a1ee5c44-08b3-562b-bc4c-10ffd03eecd4",
+                "note": ""
+            },
+            {
+                "media": "video",
+                "sender_id": "997f5db2-1cc1-51d2-8162-25f706b34d0e",
+                "receiver_id": "39c8f4f1-f864-5df3-acc1-ae3d6a379aaf",
+                "note": ""
+            },
+            {
+                "media": "virtual",
+                "sender_id": "0987846e-b303-54a2-97aa-7b605b56e776",
+                "receiver_id": "7500f6d8-cdd0-5b85-abd8-06e41375313f",
+                "note": ""
+            }
+        ]
+    },
+    {
+        "id": "wf_20251216_100432",
+        "description": "cam to monitor",
+        "created_at": "2025-12-16T09:04:32.840Z",
+        "items": [
+            {
+                "media": "video",
+                "sender_id": "1d365900-2be2-5931-a235-161f4b0afc82",
+                "receiver_id": "798d424c-7dac-5373-ae1f-f17d9b6ecf83",
+                "note": ""
+            },
+            {
+                "media": "video",
+                "sender_id": "6f6d2de4-9c5b-5a6f-ad26-ccab47dafb6f",
+                "receiver_id": "b71df359-9787-50f0-9ce4-5383dcc7a800",
+                "note": ""
+            }
+        ]
+    }
+]

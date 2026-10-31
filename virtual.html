@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="virtual_page_title">NMOS Express - Sources & Destinations virtuelles</title>
+
+  <script>
+    tailwind = { config: {} };
+  </script>
+  <script src="lib/js/tailwind.js"></script>
+  <script src="lib/js/jquery/jquery.min.js"></script>
+
+  <link href="lib/css/fontawesome/css/all.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="lib/css/virtual.css?v=1.0">
+
+  <script src="lib/js/i18n.js"></script>
+    <script src="lib/js/modal.js?v=1.0"></script>
+	<script src="lib/js/menu.js?v=1.0"></script>
+    <link rel="stylesheet" href="lib/css/modal.css?v=1.0">
+</head>
+
+<body>
+
+  <header style="padding-top:45px;padding-bottom:40px;padding-left:16px;padding-right:16px;">
+    <img src="images/logo-virtual.png" style="height:50px" alt="Logo">
+    <h1 data-i18n="virtual_header_title">Sources & Destinations virtuelles</h1>
+    <div class="tabs">
+      <button id="tabSources" class="active" data-i18n="virtual_tab_sources">Sources virtuelles</button>
+      <button id="tabDestinations" data-i18n="virtual_tab_destinations">Destinations virtuelles</button>
+    </div>
+    <div id="status" style="margin-left:auto; font-size:13px; margin-right: 16px;"></div>
+
+    <!-- Hamburger Menu Container -->
+    <div id="menuContainer" class="relative"></div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <input id="filterList" class="search" placeholder="Rechercher (label, id, tags)..."
+        data-i18n-placeholder="virtual_filter_placeholder" />
+
+      <div class="sidebar-buttons">
+        <button id="btnNew" class="primary" data-i18n="virtual_btn_new">+ Nouveau</button>
+        <button id="btnDuplicate" class="secondary" data-i18n="virtual_btn_duplicate">Dupliquer</button>
+      </div>
+
+      <div class="tree-title" id="listTitle" data-i18n="virtual_tab_sources">Sources virtuelles</div>
+      <div id="itemsList" class="item-list"></div>
+      <div id="itemsEmpty" class="item-empty" style="display:none;" data-i18n="virtual_empty_list">Aucun élément. Créez
+        une nouvelle entrée.</div>
+    </aside>
+
+    <main class="main">
+      <div class="toolbar">
+        <button id="btnSave" class="primary" data-i18n="virtual_btn_save">Enregistrer</button>
+        <button id="btnDelete" class="danger" data-i18n="virtual_btn_delete">Supprimer</button>
+      </div>
+
+      <div class="form-card">
+        <div>
+          <div class="form-title" id="formTitle" data-i18n="virtual_form_title_source">Source virtuelle</div>
+          <div class="form-subtitle" data-i18n-html="virtual_form_subtitle_html">
+            Associez un label logique à des senders/receivers NMOS <strong>personnalisés</strong>.
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-row">
+            <label for="fieldId" data-i18n="virtual_label_id">ID (unique)</label>
+            <input id="fieldId" type="text" placeholder="" />
+            <small data-i18n="virtual_help_id">Identifiant technique unique (utilisé dans les JSON / salvos).</small>
+          </div>
+
+          <div class="form-row" style="grid-column: span 2;">
+            <label for="fieldLabel" data-i18n="virtual_label_label">Label</label>
+            <input id="fieldLabel" type="text" placeholder="" />
+          </div>
+
+          <div class="form-row" style="grid-column: span 3;">
+            <label for="fieldDescription" data-i18n="virtual_label_desc">Description</label>
+            <textarea id="fieldDescription" placeholder=""></textarea>
+          </div>
+
+          <div class="form-row" style="grid-column: span 3;">
+            <label for="fieldTags" data-i18n="virtual_label_tags">Tags</label>
+            <div class="ac-container">
+              <input id="fieldTags" type="text" placeholder="" autocomplete="off" />
+              <div id="acTags" class="ac-list"></div>
+            </div>
+            <small data-i18n="virtual_help_tags">Tags libres pour filtrer / rechercher. Le premier tag est utilisé pour
+              filtrer dans la
+              matrice.</small>
+          </div>
+
+          <div class="form-row">
+            <label for="fieldVideo">&nbsp;<span class="fa fa-video">&nbsp;&nbsp;</span> <span
+                data-i18n="virtual_label_video">Vidéo (labels personnalisés)</span></label>
+            <div class="ac-container">
+              <input id="fieldVideo" type="text" placeholder="Label vidéo..."
+                data-i18n-placeholder="virtual_placeholder_video" autocomplete="off" />
+              <div id="acVideo" class="ac-list"></div>
+            </div>
+
+          </div>
+
+          <div class="form-row">
+            <label for="fieldAudio">&nbsp;<span class="fa fa-volume-up">&nbsp;&nbsp;</span><span
+                data-i18n="virtual_label_audio">Audio (labels personnalisés)</span></label>
+            <div class="ac-container">
+              <input id="fieldAudio" type="text" placeholder="Label audio..."
+                data-i18n-placeholder="virtual_placeholder_audio" autocomplete="off" />
+              <div id="acAudio" class="ac-list"></div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <label for="fieldData">&nbsp;<span class="fa fa-stream">&nbsp;&nbsp;</span><span
+                data-i18n="virtual_label_data">Data (labels personnalisés)</span></label>
+            <div class="ac-container">
+              <input id="fieldData" type="text" placeholder="Label data..."
+                data-i18n-placeholder="virtual_placeholder_data" autocomplete="off" />
+              <div id="acData" class="ac-list"></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="meta-row">
+          <span class="pill" id="metaType">Type : source</span>
+          <span class="pill" id="metaIdPreview">ID : —</span>
+          <span class="pill" id="metaLabelPreview">Label : —</span>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="lib/js/virtual.js?v=1.0"></script>
+
+</body>
+
+</html>

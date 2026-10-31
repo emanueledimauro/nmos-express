@@ -1,0 +1,244 @@
+[
+    {
+        "id": "camera01",
+        "label": "camera01",
+        "description": "",
+        "tags": [
+            "Plateau1"
+        ],
+        "video_sender": "0987846e-b303-54a2-97aa-7b605b56e776",
+        "audio_sender": "980e4787-3e53-577c-b66e-42f4c5cf7596",
+        "data_sender": "2e90fecf-6b36-536e-afac-33ab922cba96"
+    },
+    {
+        "id": "camera02",
+        "label": "camera02",
+        "description": "",
+        "tags": [
+            "Plateau1"
+        ],
+        "video_sender": "076de571-acfa-5304-a22f-b9b2659746fa",
+        "audio_sender": "bf740b64-408c-591b-8fcb-ec712a54b0b2",
+        "data_sender": "62d2c325-c2c5-5526-8028-193d1c2708ac"
+    },
+    {
+        "id": "camera03",
+        "label": "camera03",
+        "description": "",
+        "tags": [
+            "Plateau1"
+        ],
+        "video_sender": "997f5db2-1cc1-51d2-8162-25f706b34d0e",
+        "audio_sender": "096cb8af-85eb-584e-88f6-6daa5cf6a9bf",
+        "data_sender": "47194619-9b76-5e95-9d36-4f75490c617a"
+    },
+    {
+        "id": "camera04",
+        "label": "camera04",
+        "description": "",
+        "tags": [
+            "Plateau1"
+        ],
+        "video_sender": "914e3c32-79a2-5540-89f0-bd021afd95a0",
+        "audio_sender": "19bb4015-9166-5495-9f60-c4a5b4e0214c",
+        "data_sender": "a3de5136-523e-57d7-b06e-0f583aae9cbf"
+    },
+    {
+        "id": "camera05",
+        "label": "camera05",
+        "description": "",
+        "tags": [
+            "Plateau1"
+        ],
+        "video_sender": "7d0b0f97-af7a-57ad-83e8-068e5d74558e",
+        "audio_sender": "38d7c81b-5626-508f-8533-c06b38bb0c7f",
+        "data_sender": "97c98312-f82f-5416-8de2-ff311744fefe"
+    },
+    {
+        "id": "camera06",
+        "label": "camera06",
+        "description": "",
+        "tags": [
+            "Plateau1"
+        ],
+        "video_sender": "9dd81e5f-1b10-5b81-9c47-a05725244211",
+        "audio_sender": "75e6a185-f08c-5e75-a93c-c56cd709ea81",
+        "data_sender": "8b6cf15f-981a-5e05-a5f1-317ba9eb18ab"
+    },
+    {
+        "id": "camera07",
+        "label": "camera07",
+        "description": "",
+        "tags": [
+            "Plateau1"
+        ],
+        "video_sender": "65e5bfe1-089b-5dc7-922a-bc6a72034a84",
+        "audio_sender": "c25d25d4-244c-5fce-bf69-d9674ec9dd4b",
+        "data_sender": "a1911513-71b6-53a7-9842-ea5a4c9739f2"
+    },
+    {
+        "id": "camera08",
+        "label": "camera08",
+        "description": "",
+        "tags": [
+            "Plateau1"
+        ],
+        "video_sender": "9ed365dc-82f7-57b1-99e4-3122eeea5392",
+        "audio_sender": "6837b271-788a-5286-8045-ce62b92b252a",
+        "data_sender": "1b3bdb01-f2d8-57f7-b843-5fc8646e5620"
+    },
+    {
+        "id": "camera09",
+        "label": "camera09",
+        "description": "",
+        "tags": [
+            "Plateau1"
+        ],
+        "video_sender": "3466d741-7351-518a-af03-21fda3b12b24",
+        "audio_sender": "d9eb2a37-0dd3-5cea-a228-6aef021a9d90",
+        "data_sender": "2deda2c0-6d56-5c56-9056-a0637390bb4a"
+    },
+    {
+        "id": "camera10",
+        "label": "camera10",
+        "description": "",
+        "tags": [
+            "Plateau1"
+        ],
+        "video_sender": "d6acb5ac-7d43-586e-bf4c-716158e3c06e",
+        "audio_sender": "a6ed64d7-6e9f-5b5e-9523-1defe2a3964e",
+        "data_sender": "09d55300-8622-585d-9df7-73bd3e9b0b55"
+    },
+    {
+        "id": "camera11",
+        "label": "camera11",
+        "description": "",
+        "tags": [
+            "Plateau2"
+        ],
+        "video_sender": "ac493e18-852f-5cbd-9af5-a89fccd625aa",
+        "audio_sender": "59874840-8aed-598e-90cf-142ab1adfb05",
+        "data_sender": "1cda0b20-25a4-5482-9f7a-828b11ec8311"
+    },
+    {
+        "id": "camera12",
+        "label": "camera12",
+        "description": "",
+        "tags": [
+            "Plateau2"
+        ],
+        "video_sender": "21dbf0e4-3b4b-50f0-9a74-77241459c3ba",
+        "audio_sender": "f20153b0-88c4-5d06-a3b2-18c099953743",
+        "data_sender": "2fc0874e-88de-5cb7-8a24-6318d076f0e5"
+    },
+    {
+        "id": "camera13",
+        "label": "camera13",
+        "description": "",
+        "tags": [
+            "Plateau2"
+        ],
+        "video_sender": "ab2d6970-c2d3-5222-be24-97e618bf64d9",
+        "audio_sender": "9dc2fb9c-6169-5dc7-af71-bcb80432f4ff",
+        "data_sender": "969f75d5-50de-55fd-9a69-bd6495a31ede"
+    },
+    {
+        "id": "camera14",
+        "label": "camera14",
+        "description": "",
+        "tags": [
+            "Plateau2"
+        ],
+        "video_sender": "1d365900-2be2-5931-a235-161f4b0afc82",
+        "audio_sender": "556d3c37-d893-5659-a90c-3490e5648113",
+        "data_sender": "05bbf01d-40eb-5b41-bc1e-a34c5e454c4d"
+    },
+    {
+        "id": "camera15",
+        "label": "camera15",
+        "description": "",
+        "tags": [
+            "Plateau2"
+        ],
+        "video_sender": "6f6d2de4-9c5b-5a6f-ad26-ccab47dafb6f",
+        "audio_sender": "8cef5031-192f-5cb9-8374-664777cff6b2",
+        "data_sender": "ba54f77c-1ff0-5982-b1bc-13012742078c"
+    },
+    {
+        "id": "camera16",
+        "label": "camera16",
+        "description": "",
+        "tags": [
+            "Plateau2"
+        ],
+        "video_sender": "507d9b84-264c-5fca-8ab3-b0b0e7548129",
+        "audio_sender": "d686c4f4-ed78-5060-b60f-ce7b06736ac7",
+        "data_sender": "a731dfe9-8fbe-5d4b-8384-2bd27f23669a"
+    },
+    {
+        "id": "camera17",
+        "label": "camera17",
+        "description": "",
+        "tags": [
+            "Plateau2"
+        ],
+        "video_sender": "2c5d9de2-a38f-54cf-9b6d-4b8995c390b5",
+        "audio_sender": "6d023cf2-569d-552a-b236-41bbcd1fb0c0",
+        "data_sender": "d5568738-2f1e-54c6-a095-d36a78fe6189"
+    },
+    {
+        "id": "camera18",
+        "label": "camera18",
+        "description": "",
+        "tags": [
+            "Plateau2"
+        ],
+        "video_sender": "85f8cb0a-8349-559c-9dfc-5fdc36174b4e",
+        "audio_sender": "99e9db25-c66a-5655-82cc-6263aef4e5a3",
+        "data_sender": "6dd20af6-4c2d-548b-b2d0-1eb1520ba13b"
+    },
+    {
+        "id": "camera19",
+        "label": "camera19",
+        "description": "",
+        "tags": [
+            "Plateau2"
+        ],
+        "video_sender": "580a0acc-c500-5909-be81-a0f524680002",
+        "audio_sender": "07353cd3-2f85-5de5-9fdc-78792d4e226e",
+        "data_sender": "64ec7607-df42-56f6-bba1-ef9f8bf9aa59"
+    },
+    {
+        "id": "camera20",
+        "label": "camera20",
+        "description": "",
+        "tags": [
+            "Plateau2"
+        ],
+        "video_sender": "dcf85698-0c0f-5f04-a72a-090c050b4b33",
+        "audio_sender": "c1a33cc9-390c-581f-9a12-983146c7391a",
+        "data_sender": "6e58d41e-a681-5b0a-b047-10fdf3a3d205"
+    },
+    {
+        "id": "melangeur-PGM",
+        "label": "melangeur-PGM",
+        "description": "",
+        "tags": [
+            "Melangeur"
+        ],
+        "video_sender": "3ceecc59-340b-5d5e-b454-1636edac1f74",
+        "audio_sender": "8692890b-22d1-53dd-9e41-a608fd06b81a",
+        "data_sender": "e7027753-0717-5c5a-9e10-8434f3b1d887"
+    },
+    {
+        "id": "melangeur-AUX",
+        "label": "melangeur-AUX",
+        "description": "",
+        "tags": [
+            "Melangeur"
+        ],
+        "video_sender": "dced1ea2-6d1f-58b3-a4d2-f39ad098c0be",
+        "audio_sender": "741eb4cd-e8f6-5d2f-b9b7-1ee774f676f8",
+        "data_sender": "c426484a-06cc-540d-8390-db7b7640b5ff"
+    }
+]

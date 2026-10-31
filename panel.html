@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title data-i18n="panel_page_title">Easy-IPControl Panel</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="lib/css/fontawesome/css/all.min.css" rel="stylesheet">
+    <script src="lib/js/i18n.js"></script>
+    <script src="lib/js/modal.js?v=1.0"></script>
+
+    <link rel="stylesheet" href="lib/css/panel.css?v=1.0">
+    <link rel="stylesheet" href="lib/css/modal.css?v=1.0">
+</head>
+
+<body>
+    <h1><img src="images/nmos-express-transparent-white.png" style="height:75px"></h1>
+
+    <div id="mediaToolbar">
+        <span data-i18n="panel_media_type_label">Type de média :</span>
+        <button class="media-btn active" data-type="video" data-i18n="video">Vidéo</button>
+        <button class="media-btn" data-type="audio" data-i18n="audio">Audio</button>
+        <button class="media-btn" data-type="data" data-i18n="data">Data</button>
+        <button class="media-btn" data-type="virtual" data-i18n="virtual">Virtuel</button>
+        <div style="margin-left: auto; display: flex; align-items: center; gap: 8px;">
+            <span data-i18n="language" style="font-size: 12px; color: #aaaaaa;">Langue</span>
+            <select id="langSelect" class="lang-select">
+                <option value="fr">Français</option>
+                <option value="en">English</option>
+                <option value="it">Italiano</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="panel-wrapper">
+        <!-- Colonne GAUCHE : Source -->
+        <div class="panel-column src-column">
+            <div class="panel-box">
+                <div class="panel-title" data-i18n="panel_src_group_title">Groupement de la source</div>
+                <div class="tag-picker-wrapper" id="srcTagPicker">
+                    <div class="tag-picker-box" onclick="document.getElementById('srcGroupInput').focus()">
+                        <div class="tag-badges-list" id="srcGroupBadges"></div>
+                        <input id="srcGroupInput" class="tag-picker-input" autocomplete="off"
+                            placeholder="ex : Plateau1" data-i18n-placeholder="panel_src_group_placeholder">
+                    </div>
+                    <div class="tag-dropdown" id="srcGroupDropdown"></div>
+                </div>
+            </div>
+
+            <div class="panel-box">
+                <div class="panel-title" data-i18n="panel_src_title">Source</div>
+                <input id="srcSearchInput" class="search-input" placeholder="ex : camera1, player, serveur…"
+                    data-i18n-placeholder="panel_src_search_placeholder">
+                <div class="list-container" id="srcList"></div>
+            </div>
+        </div>
+
+        <!-- Colonne CENTRALE VIDE -->
+        <div class="center-column"></div>
+
+        <!-- Colonne DROITE : Destination -->
+        <div class="panel-column">
+            <div class="panel-box">
+                <div class="panel-title" data-i18n="panel_dst_group_title">Groupement de la destination</div>
+                <div class="tag-picker-wrapper" id="dstTagPicker">
+                    <div class="tag-picker-box" onclick="document.getElementById('dstGroupInput').focus()">
+                        <div class="tag-badges-list" id="dstGroupBadges"></div>
+                        <input id="dstGroupInput" class="tag-picker-input" autocomplete="off" placeholder="ex : Régie2"
+                            data-i18n-placeholder="panel_dst_group_placeholder">
+                    </div>
+                    <div class="tag-dropdown" id="dstGroupDropdown"></div>
+                </div>
+            </div>
+
+            <div class="panel-box">
+                <div class="panel-title" data-i18n="panel_dst_title">Destination</div>
+                <input id="dstSearchInput" class="search-input" placeholder="ex : moniteur1, habillage IN..."
+                    data-i18n-placeholder="panel_dst_search_placeholder">
+                <div class="list-container" id="dstList"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="status"></div>
+
+    <!-- BOUTON TAKE FIXE -->
+    <button id="takeButton" disabled data-i18n="panel_take_btn">TAKE</button>
+
+    <script src="lib/js/panel.js?v=1.0"></script>
+</body>
+
+</html>

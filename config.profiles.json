@@ -1,0 +1,51 @@
+[
+
+  { "id": "720p50",   "label": "720p50",   "type": "video" },
+  { "id": "720p59",   "label": "720p59",   "type": "video" },
+
+  { "id": "1080i50",  "label": "1080i50",  "type": "video" },
+  { "id": "1080i59",  "label": "1080i59",  "type": "video" },
+
+  { "id": "1080p23",  "label": "1080p23",  "type": "video" },
+  { "id": "1080p24",  "label": "1080p24",  "type": "video" },
+  { "id": "1080p25",  "label": "1080p25",  "type": "video" },
+  { "id": "1080p29",  "label": "1080p29",  "type": "video" },
+  { "id": "1080p30",  "label": "1080p30",  "type": "video" },
+  { "id": "1080p50",  "label": "1080p50",  "type": "video" },
+  { "id": "1080p59",  "label": "1080p59",  "type": "video" },
+
+  { "id": "2160p23",  "label": "2160p23",  "type": "video" },
+  { "id": "2160p24",  "label": "2160p24",  "type": "video" },
+  { "id": "2160p25",  "label": "2160p25",  "type": "video" },
+  { "id": "2160p29",  "label": "2160p29",  "type": "video" },
+  { "id": "2160p30",  "label": "2160p30",  "type": "video" },
+  { "id": "2160p50",  "label": "2160p50",  "type": "video" },
+  { "id": "2160p59",  "label": "2160p59",  "type": "video" },
+
+
+
+
+  { "id": "1080p50-HLG-BT2020",  "label": "1080p50-HLG-BT2020",  "type": "video" },
+  { "id": "2160p25-HLG-BT2020",  "label": "2160p25-HLG-BT2020",  "type": "video" },
+  { "id": "2160p50-HLG-BT2020",  "label": "2160p50-HLG-BT2020",  "type": "video" },
+
+  { "id": "1080p50-PQ-BT2020",   "label": "1080p50-PQ-BT2020",   "type": "video" },
+  { "id": "2160p25-PQ-BT2020",   "label": "2160p25-PQ-BT2020",   "type": "video" },
+  { "id": "2160p50-PQ-BT2020",   "label": "2160p50-PQ-BT2020",   "type": "video" },
+
+
+  { "id": "1080p50-PQ-BT709",    "label": "1080p50-PQ-BT709",    "type": "video" },
+
+
+
+  { "id": "48000-L24-2CH",   "label": "48000-L24-2CH",   "type": "audio" },
+  { "id": "48000-L24-4CH",   "label": "48000-L24-4CH",   "type": "audio" },
+  { "id": "48000-L24-6CH",   "label": "48000-L24-6CH",   "type": "audio" },
+  { "id": "48000-L24-8CH",   "label": "48000-L24-8CH",   "type": "audio" },
+  { "id": "48000-L24-16CH",  "label": "48000-L24-16CH",  "type": "audio" },
+
+
+
+  { "id": "ANC-2110-40",   "label": "ANC-2110-40",   "type": "data" }
+
+]

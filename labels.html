@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-i18n="labels_page_title">NMOS Express - Gestion des libellés</title>
+
+
+
+  <script>
+    tailwind = { config: {} };
+  </script>
+  <script src="lib/js/tailwind.js"></script>
+  <script src="lib/js/jquery/jquery.min.js"></script>
+
+
+  <!-- Font Awesome local (offline) -->
+  <link href="lib/css/fontawesome/css/all.min.css" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="lib/css/labels.css?v=1.0">
+
+  <script src="lib/js/i18n.js"></script>
+    <script src="lib/js/modal.js?v=1.0"></script>
+	<script src="lib/js/menu.js?v=1.0"></script>
+    <link rel="stylesheet" href="lib/css/modal.css?v=1.0">
+</head>
+
+<body>
+  <header style="padding-top:45px;padding-bottom:40px;padding-left:16px;padding-right:16px;">
+
+    <img src="images/logo-labels.png" style="height:50px" alt="Logo">
+    <div class="tabs">
+      <button id="tabSenders" class="active" data-i18n="labels_tab_senders">Senders</button>
+      <button id="tabReceivers" data-i18n="labels_tab_receivers">Receivers</button>
+    </div>
+
+    <div id="status" style="margin-left:auto; font-size:13px; margin-right: 16px;"></div>
+
+    <!-- Hamburger Menu Container -->
+    <div id="menuContainer" class="relative"></div>
+
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <input id="filterTree" class="search" placeholder="Filtrer nodes/devices..."
+        data-i18n-placeholder="labels_filter_tree_placeholder" />
+
+      <div class="tree-section">
+        <div class="tree-title" data-i18n="labels_nav_title">Navigation</div>
+        <div id="nodesList"></div>
+        <div id="nodesHint" class="devices-hint" style="display:none;" data-i18n="labels_no_node_match">Aucun node ne
+          correspond au filtre.</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="toolbar">
+        <input id="filterItems" class="search" placeholder="Rechercher (label, équipement)..."
+          data-i18n-placeholder="labels_filter_items_placeholder" />
+
+        <select id="filterCustomState" style="width:auto; min-width:270px;">
+          <option value="all" data-i18n="labels_filter_all_items">Tous les éléments</option>
+          <option value="custom" data-i18n="labels_filter_custom_only">Seulement les éléments avec labels personnalisés
+          </option>
+          <option value="to_customize" data-i18n="labels_filter_to_customize_only">Seulement les éléments avec labels à
+            personnaliser</option>
+        </select>
+
+        <select id="filterMedia" style="width:150px;">
+          <option value="" data-i18n="labels_all_media">Tous médias</option>
+          <option value="video" data-i18n="video">Vidéo</option>
+          <option value="audio" data-i18n="audio">Audio</option>
+          <option value="data" data-i18n="data">Data</option>
+          <option value="unknown" data-i18n="labels_media_unknown">Inconnu</option>
+        </select>
+
+        <button id="saveAll" class="save" disabled data-i18n="labels_save_all">Enregistrer tout</button>
+        <span class="hint" data-i18n="labels_stored_hint">Stocké dans JSON_*_labs.json</span>
+      </div>
+
+      <div id="recap" class="recap-box" style="display:none;"></div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:20%" data-i18n="labels_col_current">Label actuel</th>
+              <th style="width:20%" data-i18n="labels_col_nmos">Label NMOS</th>
+              <th style="width:22%" data-i18n="labels_col_new">Nouveau Label</th>
+              <th style="width:12%" data-i18n="labels_col_category">Catégorie</th>
+              <th style="width:8%;text-align:center;" data-i18n="labels_col_type">Type</th>
+              <th style="width:18%" data-i18n="labels_col_profiles">Profils</th>
+              <th data-i18n="equipment">Équipement</th>
+              <th data-i18n="labels_col_device">Device</th>
+              <th style="width:100px; text-align:right;" data-i18n="labels_col_action">Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="itemsTbody"></tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+
+  <script src="lib/js/labels.js?v=1.0"></script>
+
+</body>
+
+</html>

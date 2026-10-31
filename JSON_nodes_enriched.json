@@ -1,0 +1,37 @@
+[
+    {
+        "id": "755f521c-9a7c-58da-bc8e-971ff91662a5",
+        "label": "SNP-GATEWAY11",
+        "description": "Simulated NMOS Node SNP-GATEWAY11",
+        "node_api": "http://127.0.0.1:8001/x-nmos/node/v1.3/",
+        "node_name": "SNP-GATEWAY"
+    },
+    {
+        "id": "c820e143-843c-530f-a0b5-5d6026e1770b",
+        "label": "SNP-GATEWAY-MONITOR1",
+        "description": "Simulated NMOS Node SNP-GATEWAY-MONITOR1",
+        "node_api": "http://127.0.0.1:8002/x-nmos/node/v1.3/",
+        "node_name": "SNP-GATEWAY-MONITOR1"
+    },
+    {
+        "id": "31040ddf-b68f-52a5-909f-81d10c836d3d",
+        "label": "RossRx01",
+        "description": "Simulated NMOS Node RossRx01",
+        "node_api": "http://127.0.0.1:8003/x-nmos/node/v1.3/",
+        "node_name": "RossRx01"
+    },
+    {
+        "id": "379eee78-0305-5009-afd5-f558b8f218d5",
+        "label": "RossRx02",
+        "description": "Simulated NMOS Node RossRx02",
+        "node_api": "http://127.0.0.1:8004/x-nmos/node/v1.3/",
+        "node_name": "RossRx02"
+    },
+    {
+        "id": "75c14bec-caed-5ded-bd55-958f23da5b0c",
+        "label": "NEURON-COLOR ",
+        "description": "Simulated NMOS Node NEURON-COLOR ",
+        "node_api": "http://127.0.0.1:8005/x-nmos/node/v1.3/",
+        "node_name": "NEURON-COLOR "
+    }
+]

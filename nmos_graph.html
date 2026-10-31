@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="graph_page_title">NMOS Graph Visualization</title>
+
+    <script>
+        tailwind = { config: {} };
+    </script>
+    <script src="lib/js/tailwind.js"></script>
+    <script src="lib/js/jquery/jquery.min.js"></script>
+
+    <!-- Font Awesome local (offline) -->
+    <link href="lib/css/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="lib/css/tailwind.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="lib/css/nmos_graph.css?v=1.0">
+
+    <script src="lib/js/i18n.js"></script>
+    <script src="lib/js/modal.js?v=1.0"></script>
+	<script src="lib/js/menu.js?v=1.0"></script>
+    <link rel="stylesheet" href="lib/css/modal.css?v=1.0">
+</head>
+
+<body class="bg-gray-50 text-gray-800 h-screen flex flex-col p-6 font-sans">
+    <header class="mb-4 flex justify-between items-center max-w-[100%] mx-auto w-full">
+        <div class="flex items-center gap-3">
+            <h1 class="text-xl font-bold text-gray-900">
+                <img src="images/logo-graph.png" style="height:45px">
+            </h1>
+            <a href="nmos_graph_virtual.html"
+                class="ml-2 px-3 py-1.5 bg-purple-50 text-purple-700 border border-purple-200 rounded-md text-xs font-semibold hover:bg-purple-100 flex items-center gap-1.5 transition-colors shadow-sm"
+                title="Passer au graphe des sources et destinations virtuelles">
+                <i class="fas fa-layer-group text-purple-600"></i>
+                <span data-i18n="graph_view_virtual">Vue Virtuelle</span>
+            </a>
+        </div>
+
+        <div class="text-right text-xs text-gray-400 flex flex-col items-end gap-1">
+            <div class="flex items-center gap-2 relative">
+
+                <!-- Select moved to toolbar -->
+
+                <div id="menuContainer" class="relative"></div>
+
+            </div>
+        </div>
+    </header>
+
+    
+
+
+
+    <div id="graph-workspace">
+        <!-- Toolbar Graphique -->
+        <div class="mb-4 bg-white border border-gray-200 rounded-lg shadow-sm p-2 flex flex-wrap items-center gap-4">
+
+            <!-- Grouping (Mode) -->
+            <div class="flex items-center gap-2 border-r border-gray-200 pr-4">
+                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider pl-2"
+                    data-i18n="graph_view_label">Vue</span>
+                <select id="grouping-mode"
+                    class="text-xs border-none bg-gray-50 rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer font-medium text-gray-700 hover:bg-gray-100 transition-colors">
+                    <option value="category" data-i18n="graph_group_by_category">Par Catégorie</option>
+                    <option value="equipment" data-i18n="graph_group_by_equipment">Par Équipement</option>
+                </select>
+            </div>
+
+            <!-- Connections Filter (Active vs All) -->
+            <div class="flex items-center gap-2 border-r border-gray-200 pr-4">
+                <select id="connections-mode"
+                    class="text-xs border-none bg-gray-50 rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-blue-500 cursor-pointer font-medium text-gray-700 hover:bg-gray-100 transition-colors">
+                    <option value="active" data-i18n="graph_conn_active_only">Connexions actives seulement</option>
+                    <option value="all" data-i18n="graph_conn_show_all">Toutes les sources et destinations</option>
+                </select>
+            </div>
+
+            <!-- Search Sources -->
+            <div class="flex items-center gap-2 flex-grow max-w-[200px] relative">
+                <i class="fas fa-sign-out-alt text-gray-400 absolute left-3 text-xs"></i>
+                <input id="search-senders" type="text" placeholder="Filtrer Sources..."
+                    data-i18n-placeholder="graph_filter_sources"
+                    class="w-full text-xs bg-gray-50 border border-gray-200 rounded-full pl-9 pr-4 py-1.5 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+            </div>
+
+            <!-- Search Destinations -->
+            <div class="flex items-center gap-2 flex-grow max-w-[200px] relative">
+                <i class="fas fa-sign-in-alt text-gray-400 absolute left-3 text-xs"></i>
+                <input id="search-receivers" type="text" placeholder="Filtrer Destinations..."
+                    data-i18n-placeholder="graph_filter_dests"
+                    class="w-full text-xs bg-gray-50 border border-gray-200 rounded-full pl-9 pr-4 py-1.5 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all">
+            </div>
+
+            <!-- Media Type Filters -->
+            <div class="flex items-center gap-1.5 border-l border-gray-200 pl-4">
+                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider mr-1.5" data-i18n="media_filter">Médias</span>
+                <div class="inline-flex rounded-md shadow-sm" role="group">
+                    <button id="filter-btn-video" type="button" onclick="toggleMediaType('video')"
+                        class="px-2.5 py-1 text-xs font-semibold rounded-l-md border border-blue-300 bg-blue-100 text-blue-800 transition-all flex items-center gap-1.5 shadow-sm"
+                        title="Afficher/Masquer Vidéo">
+                        <i class="fas fa-video text-blue-600"></i>
+                        <span data-i18n="media_video">Vidéo</span>
+                    </button>
+                    <button id="filter-btn-audio" type="button" onclick="toggleMediaType('audio')"
+                        class="px-2.5 py-1 text-xs font-semibold border-t border-b border-r border-l border-amber-300 bg-amber-100 text-amber-800 transition-all flex items-center gap-1.5 shadow-sm"
+                        title="Afficher/Masquer Audio">
+                        <i class="fas fa-volume-up text-amber-600"></i>
+                        <span data-i18n="media_audio">Audio</span>
+                    </button>
+                    <button id="filter-btn-data" type="button" onclick="toggleMediaType('data')"
+                        class="px-2.5 py-1 text-xs font-semibold rounded-r-md border-t border-b border-r border-l border-emerald-300 bg-emerald-100 text-emerald-800 transition-all flex items-center gap-1.5 shadow-sm"
+                        title="Afficher/Masquer Data">
+                        <i class="fas fa-stream text-emerald-600"></i>
+                        <span data-i18n="media_data">Data</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Commutation Mode Badge -->
+            <div id="commutation-badge-container" class="hidden items-center border-l border-gray-200 pl-4">
+                <div id="commutation-badge"
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium border shadow-sm transition-all cursor-pointer hover:shadow-md"
+                    onclick="cancelCommutationMode()" title="Quitter le mode commutation (tout réafficher)"
+                    data-i18n-title="graph_cancel_commutation">
+                    <i id="commutation-badge-icon" class="fas fa-random"></i>
+                    <span id="commutation-badge-text"></span>
+                    <button type="button" onclick="event.stopPropagation(); cancelCommutationMode();"
+                        class="ml-1 w-4 h-4 rounded-full flex items-center justify-center hover:bg-black/10 focus:outline-none cursor-pointer"
+                        title="Quitter le mode commutation (tout réafficher)"
+                        data-i18n-title="graph_cancel_commutation">
+                        <i class="fas fa-times text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="flex items-center gap-1 ml-auto">
+                <button id="btn-zoom-out" onclick="changeZoom(-0.1)"
+                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    title="Zoom Arrière" data-i18n-title="graph_zoom_out">
+                    <i class="fas fa-minus text-xs"></i>
+                </button>
+                <button id="zoom-level" onclick="resetZoom()"
+                    class="text-xs font-medium text-gray-500 hover:text-blue-600 w-12 text-center cursor-pointer rounded py-1 hover:bg-blue-50 transition-colors"
+                    title="100%">100%</button>
+                <button id="btn-zoom-in" onclick="changeZoom(0.1)"
+                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    title="Zoom Avant" data-i18n-title="graph_zoom_in">
+                    <i class="fas fa-plus text-xs"></i>
+                </button>
+
+                <div class="w-px h-4 bg-gray-200 mx-2"></div>
+
+                <button id="btn-fullscreen" onclick="toggleFullscreen()"
+                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    title="Plein écran" data-i18n-title="graph_recenter">
+                    <i id="fullscreen-icon" class="fas fa-expand text-xs"></i>
+                </button>
+
+                <div class="w-px h-4 bg-gray-200 mx-2"></div>
+
+                <button onclick="window.location.reload()"
+                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    title="Rafraîchir" data-i18n-title="graph_refresh">
+                    <i class="fas fa-sync-alt text-xs"></i>
+                </button>
+            </div>
+
+        </div>
+
+        <div id="graph-container">
+            <div id="graph-canvas">
+                <svg id="connections"></svg>
+
+                <div class="column" id="col-senders">
+
+                    <!-- Nodes injected here -->
+                </div>
+
+                <div class="column" id="col-hybrid">
+
+                    <!-- Nodes injected here -->
+                </div>
+
+                <div class="column" id="col-receivers">
+
+                    <!-- Nodes injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- Modal de Commutation NMOS -->
+    <div id="switch-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div
+            class="bg-white rounded-xl shadow-2xl w-full max-w-lg mx-4 overflow-hidden border border-gray-200 transform transition-all">
+            <!-- Header -->
+            <div class="bg-slate-900 text-white px-5 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-random text-blue-400"></i>
+                    <h3 class="font-semibold text-base">Commutation NMOS</h3>
+                </div>
+                <button onclick="closeSwitchModal()" class="text-gray-400 hover:text-white transition-colors"
+                    title="Fermer">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6 space-y-5">
+                <!-- Recap Cards: Source -> Destination -->
+                <div
+                    class="flex items-stretch justify-between gap-3 bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <!-- Source Box -->
+                    <div class="flex-1 bg-white p-3 rounded-md border border-emerald-300 shadow-sm">
+                        <div
+                            class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider mb-1 flex items-center gap-1">
+                            <i class="fas fa-sign-out-alt"></i> Source
+                        </div>
+                        <div id="modal-source-label" class="text-sm font-bold text-gray-800 truncate" title="">--</div>
+                        <div class="mt-2 flex items-center gap-1.5 flex-wrap">
+                            <span id="modal-source-media"
+                                class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                <i class="fas fa-video"></i> <span>Vidéo</span>
+                            </span>
+                            <span id="modal-source-group" class="text-[11px] text-gray-500 truncate"></span>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="flex items-center justify-center text-blue-500 px-1">
+                        <i class="fas fa-arrow-right text-lg"></i>
+                    </div>
+
+                    <!-- Destination Box -->
+                    <div class="flex-1 bg-white p-3 rounded-md border border-blue-300 shadow-sm">
+                        <div
+                            class="text-[10px] font-bold text-blue-600 uppercase tracking-wider mb-1 flex items-center gap-1">
+                            <i class="fas fa-sign-in-alt"></i> Destination
+                        </div>
+                        <div id="modal-dest-label" class="text-sm font-bold text-gray-800 truncate" title="">--</div>
+                        <div class="mt-2 flex items-center gap-1.5 flex-wrap">
+                            <span id="modal-dest-media"
+                                class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                                <i class="fas fa-video"></i> <span>Vidéo</span>
+                            </span>
+                            <span id="modal-dest-group" class="text-[11px] text-gray-500 truncate"></span>
+                        </div>
+                        <div id="modal-dest-current" class="text-[10px] text-gray-400 mt-1 truncate"></div>
+                    </div>
+                </div>
+
+                <!-- Profile Alert / Warning if incompatible -->
+                <div id="modal-profile-warn"
+                    class="hidden p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-xs flex items-start gap-2">
+                    <i class="fas fa-exclamation-triangle text-amber-500 mt-0.5 flex-shrink-0"></i>
+                    <div id="modal-profile-warn-text">Profil non autorisé pour ce récepteur.</div>
+                </div>
+
+                <!-- Error Box -->
+                <div id="switch-modal-error"
+                    class="hidden p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-xs flex items-start gap-2">
+                    <i class="fas fa-exclamation-circle text-red-500 mt-0.5 flex-shrink-0"></i>
+                    <div class="flex-1">
+                        <div class="font-semibold mb-0.5">Erreur de commutation</div>
+                        <div id="switch-modal-error-text" class="break-words"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="bg-gray-50 px-6 py-3.5 flex items-center justify-end gap-3 border-t border-gray-200">
+                <button id="modal-cancel-btn" onclick="closeSwitchModal()" type="button"
+                    class="px-4 py-2 text-xs font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100 transition-colors">
+                    Fermer
+                </button>
+                <button id="modal-take-btn" onclick="handleModalTake()" type="button"
+                    class="px-5 py-2 text-xs font-bold text-white bg-blue-600 rounded-md hover:bg-blue-700 shadow transition-colors flex items-center gap-2">
+                    <i class="fas fa-bolt"></i> TAKE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="lib/js/nmos_graph.js?v=1.0"></script>
+</body>
+
+</html>

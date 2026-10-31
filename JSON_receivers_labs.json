@@ -1,0 +1,394 @@
+[
+    {
+        "id": "b71df359-9787-50f0-9ce4-5383dcc7a800",
+        "label": "melangeur-in01",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Melangeur"
+    },
+    {
+        "id": "99c37b09-fafa-549b-b83c-8b0affacb10e",
+        "label": "melangeur-in01 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Melangeur"
+    },
+    {
+        "id": "5f82f574-3992-500a-a33b-02aaa4667635",
+        "label": "melangeur-in01 data",
+        "profiles_allowed": "*",
+        "profile_id": "*",
+        "category": "Melangeur"
+    },
+    {
+        "id": "08bb1164-acb0-57c2-9808-05c87fd0c2aa",
+        "label": "melangeur-in02",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Melangeur"
+    },
+    {
+        "id": "56372843-3a53-5f6b-af1c-f53872227417",
+        "label": "melangeur-in02 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Melangeur"
+    },
+    {
+        "id": "41ba1108-4f54-5e18-82ce-c8a5f230080c",
+        "label": "melangeur-in02 data",
+        "profiles_allowed": "*",
+        "profile_id": "*",
+        "category": "Melangeur"
+    },
+    {
+        "id": "8c283bec-15f8-5e6a-a5dc-3f2ed10d3d13",
+        "label": "melangeur-in03",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Melangeur"
+    },
+    {
+        "id": "1a7e57a3-2a40-55f4-a06e-1c1c2d608f15",
+        "label": "melangeur-in03 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Melangeur"
+    },
+    {
+        "id": "70d3681c-7cf9-509b-be99-8d9de4f67001",
+        "label": "melangeur-in03 data",
+        "profiles_allowed": "*",
+        "profile_id": "*",
+        "category": "Melangeur"
+    },
+    {
+        "id": "2084fe34-59d0-5ead-a296-3164b48ebb4a",
+        "label": "melangeur-in04",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Melangeur"
+    },
+    {
+        "id": "70a8dadb-6a05-524a-bf4a-9bbd2aad031a",
+        "label": "melangeur-in04 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Melangeur"
+    },
+    {
+        "id": "c48128be-51a9-594b-8a73-5b014f391c31",
+        "label": "melangeur-in04 data",
+        "profiles_allowed": "*",
+        "profile_id": "*",
+        "category": "Melangeur"
+    },
+    {
+        "id": "71eded30-16b7-5600-aa36-bf58513cbed0",
+        "label": "melangeur-in05",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Melangeur"
+    },
+    {
+        "id": "82c45587-34e6-5bcc-b2f1-74d46cd9c7ec",
+        "label": "melangeur-in05 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Melangeur"
+    },
+    {
+        "id": "7bdfa7d8-511d-5f52-a754-1355ab8f3f4d",
+        "label": "melangeur-in05 data",
+        "profiles_allowed": "*",
+        "profile_id": "*",
+        "category": "Melangeur"
+    },
+    {
+        "id": "a4813594-71fd-548a-afa0-05826603de16",
+        "label": "melangeur-in06",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Melangeur"
+    },
+    {
+        "id": "5b2fa534-cb0c-54de-af8d-0bcb8f4e0571",
+        "label": "melangeur-in06 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Melangeur"
+    },
+    {
+        "id": "4b9f2b57-8c6d-524a-b5ca-79bf8ac7dea4",
+        "label": "melangeur-in06 data",
+        "profiles_allowed": "*",
+        "profile_id": "*",
+        "category": "Melangeur"
+    },
+    {
+        "id": "a667d102-d31e-5d0c-9dbe-aecdc64502d6",
+        "label": "melangeur-in07",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Melangeur"
+    },
+    {
+        "id": "903cb621-0e6f-5707-bce7-faf777d8ee80",
+        "label": "melangeur-in07 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Melangeur"
+    },
+    {
+        "id": "b0092715-a691-5f56-95b6-ea002ed7e4e5",
+        "label": "melangeur-in07 data",
+        "profiles_allowed": "*",
+        "profile_id": "*",
+        "category": "Melangeur"
+    },
+    {
+        "id": "12f22932-6eaf-58f6-8589-cbcbaa90b921",
+        "label": "melangeur-in08",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Melangeur"
+    },
+    {
+        "id": "6a295b49-959e-5bfc-82d4-8c1cb96d8ac2",
+        "label": "melangeur-in08 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Melangeur"
+    },
+    {
+        "id": "73518749-80dc-5e97-8544-5cb54b629f02",
+        "label": "melangeur-in08 data",
+        "profiles_allowed": "*",
+        "profile_id": "*",
+        "category": "Melangeur"
+    },
+    {
+        "id": "d18c6364-a3a3-5cf7-a8a6-1f3941886e86",
+        "label": "melangeur-in09",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Melangeur"
+    },
+    {
+        "id": "dad8070e-90ab-58fa-ae44-170722d8ebcf",
+        "label": "melangeur-in09 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Melangeur"
+    },
+    {
+        "id": "48381e61-8e62-5237-8535-a35cef16456b",
+        "label": "melangeur-in09 data",
+        "profiles_allowed": "*",
+        "profile_id": "*",
+        "category": "Melangeur"
+    },
+    {
+        "id": "d0d518f3-88cb-50ac-a99d-67c9ebee1e3e",
+        "label": "melangeur-in10",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Melangeur"
+    },
+    {
+        "id": "cdfbac7a-0612-5ee2-9943-c444f5db0d12",
+        "label": "melangeur-in10 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Melangeur"
+    },
+    {
+        "id": "115e855e-e27b-5554-8071-ea3e809661f2",
+        "label": "melangeur-in10 data",
+        "profiles_allowed": "*",
+        "profile_id": "*",
+        "category": "Melangeur"
+    },
+    {
+        "id": "0a686fbf-2a6c-5f67-a3ff-2c6fef8f034d",
+        "label": "ecran01",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie1"
+    },
+    {
+        "id": "61745ef8-1e72-5026-9adc-2ee2529792d6",
+        "label": "ecran01 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Regie1"
+    },
+    {
+        "id": "7500f6d8-cdd0-5b85-abd8-06e41375313f",
+        "label": "ecran02",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie1"
+    },
+    {
+        "id": "b5afef92-adb1-5600-96f3-0ab8f79e7d57",
+        "label": "ecran02 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Regie1"
+    },
+    {
+        "id": "df211e90-b314-50f6-911a-99ec3d3cd939",
+        "label": "ecran03",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie1"
+    },
+    {
+        "id": "0887f74b-62d0-5b5f-9cc9-36de3e3d34fe",
+        "label": "ecran03 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Regie1"
+    },
+    {
+        "id": "39c8f4f1-f864-5df3-acc1-ae3d6a379aaf",
+        "label": "ecran04",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie1"
+    },
+    {
+        "id": "f50dfd7a-033c-523c-9785-e5e6114c798b",
+        "label": "ecran04 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Regie1"
+    },
+    {
+        "id": "798d424c-7dac-5373-ae1f-f17d9b6ecf83",
+        "label": "ecran05",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie1"
+    },
+    {
+        "id": "a1ee5c44-08b3-562b-bc4c-10ffd03eecd4",
+        "label": "ecran05 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Regie1"
+    },
+    {
+        "id": "4c176a37-a9b4-521d-aea2-95a71e4d0e4f",
+        "label": "ecran06",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie1"
+    },
+    {
+        "id": "f0a8c4f8-536f-5368-ac06-6dc00de0ddf5",
+        "label": "ecran06 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Regie1"
+    },
+    {
+        "id": "2d000428-c697-53ea-9523-343d28808c57",
+        "label": "ecran07",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie1"
+    },
+    {
+        "id": "5fa526e9-98b8-56d8-9927-d664229d221f",
+        "label": "ecran07 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Regie1"
+    },
+    {
+        "id": "81a26d9f-1c35-5ce4-b192-9d691b6fde9e",
+        "label": "ecran08",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie1"
+    },
+    {
+        "id": "28cea9bf-48dc-5784-a429-ad67cea3a11a",
+        "label": "ecran08 audio",
+        "profiles_allowed": "*",
+        "profile_id": "48000-L24-16CH",
+        "category": "Regie1"
+    },
+    {
+        "id": "c672f03b-45f8-5d8c-a66e-3c907039dc70",
+        "label": "ecran09",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie2"
+    },
+    {
+        "id": "de4b21a8-58de-5b77-a0bd-b20ac9a0e3de",
+        "label": "ecran10",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie2"
+    },
+    {
+        "id": "1f2696fa-db24-5f1e-ae3f-655db48df194",
+        "label": "ecran11",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie2"
+    },
+    {
+        "id": "87143d30-5306-517f-bd22-d50460072044",
+        "label": "ecran12",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie2"
+    },
+    {
+        "id": "9f8dbc14-a25b-5672-8f44-5dab48c94719",
+        "label": "ecran13",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie2"
+    },
+    {
+        "id": "08b55ba9-dbfc-57c9-b9c6-dbbcf6f1f9c4",
+        "label": "ecran14",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie2"
+    },
+    {
+        "id": "7a17fa9b-ac89-5286-b67e-9e5b1a0a288f",
+        "label": "ecran15",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie2"
+    },
+    {
+        "id": "57ef289c-d6c9-5db6-a5ba-1c6c400c885d",
+        "label": "ecran16",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie2"
+    },
+    {
+        "id": "4f1be0b9-82c0-5367-9f7a-a8976fde35b7",
+        "label": "ecran17",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie2"
+    },
+    {
+        "id": "ebf7a9a9-50cf-5021-aa4f-bbcdddc50bb1",
+        "label": "ecran18",
+        "profiles_allowed": "*",
+        "profile_id": "1080i50",
+        "category": "Regie2"
+    }
+]

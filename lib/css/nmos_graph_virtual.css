@@ -1,0 +1,334 @@
+/**
+ * NMOS Express - Virtual Graph Visualizer (nmos_graph_virtual.html)
+ */
+
+/* --- GRAPH STYLES --- */
+        #graph-workspace {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            min-height: 0;
+        }
+
+        #graph-workspace:fullscreen {
+            background-color: #f9fafb;
+            padding: 1.5rem;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #graph-container {
+            display: flex;
+            position: relative;
+            background-color: #fafafa;
+            flex-grow: 1;
+            border-radius: 8px;
+            overflow-y: auto;
+            overflow-x: auto;
+            min-height: 600px;
+            border: 1px solid #e5e7eb;
+        }
+
+        #graph-canvas {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            width: 100%;
+            min-height: 100%;
+            transform-origin: 0 0;
+            padding: 20px 40px;
+            box-sizing: border-box;
+        }
+
+        /* SVG Layer pour les courbes */
+        #connections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .column {
+            width: 380px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 2;
+        }
+
+        #col-sources {
+            align-items: flex-start;
+        }
+
+        #col-destinations {
+            align-items: flex-end;
+        }
+
+        .column-header {
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 12px;
+            color: #4b5563;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 12px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .node {
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            color: #1f2937;
+            position: relative;
+            font-size: 13px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            width: 380px;
+            box-sizing: border-box;
+            transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+        }
+
+        .node:hover {
+            border-color: #9ca3af;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+        }
+
+        .node-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #374151;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ports-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .port {
+            background-color: white;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 5px 8px;
+            font-size: 11px;
+            cursor: pointer;
+            position: relative;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .port:hover {
+            background-color: #f0fdf4;
+            border-color: #10b981;
+            color: #065f46;
+        }
+
+        /* Destination sélectionnée (bleu) */
+        .port.input.selected-dest,
+        .port.input.selected-dest:hover {
+            background-color: #2563eb !important;
+            border-color: #1d4ed8 !important;
+            color: #ffffff !important;
+            font-weight: 600;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.45);
+        }
+
+        .port.input.selected-dest .anchor {
+            background-color: #1d4ed8 !important;
+        }
+
+        .port.input.selected-dest .port-sender-sub {
+            color: #bfdbfe !important;
+        }
+
+        /* Indication sur les sources quand une destination est sélectionnée */
+        body.dest-selected .port.output {
+            border-color: #10b981;
+            box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.35);
+        }
+
+        body.dest-selected .port.output:hover {
+            background-color: #ecfdf5;
+            border-color: #059669;
+            color: #047857;
+            transform: scale(1.02);
+        }
+
+        /* Source virtuelle sélectionnée (Filtre destinations) */
+        .port.output.selected-source,
+        .port.output.selected-source:hover {
+            background-color: #059669 !important;
+            border-color: #047857 !important;
+            color: #ffffff !important;
+            font-weight: 600;
+            box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.45);
+        }
+
+        .port.output.selected-source span {
+            color: #ffffff !important;
+        }
+
+        .port.output.selected-source .anchor {
+            background-color: #047857 !important;
+            box-shadow: 0 0 0 2px #34d399;
+        }
+
+        .port.output.selected-source i {
+            color: #d1fae5 !important;
+        }
+
+        body.source-selected .port.output:not(.selected-source) {
+            opacity: 0.55;
+        }
+
+        body.source-selected .port.output:not(.selected-source):hover {
+            opacity: 1.0;
+        }
+
+        /* Points d'ancrage visuels */
+        .anchor {
+            width: 8px;
+            height: 8px;
+            background-color: #6b7280;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            margin-top: -4px;
+            transition: transform 0.15s;
+        }
+
+        .port.input .anchor {
+            left: -14px;
+        }
+
+        .port.output .anchor {
+            right: -14px;
+        }
+
+        .port:hover .anchor {
+            transform: scale(1.3);
+            background-color: #10b981;
+        }
+
+        /* Badges de composantes */
+        .component-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 17px;
+            height: 17px;
+            border-radius: 3px;
+            font-size: 9px;
+            margin-left: 2px;
+            margin-right: 2px;
+            transition: all 0.2s;
+        }
+
+        .component-badge.ok {
+            background-color: #ecfdf5;
+            color: #059669;
+            border: 1px solid #a7f3d0;
+        }
+
+        .component-badge.incoherent {
+            background-color: #fef2f2;
+            color: #dc2626;
+            border: 1px solid #fecaca;
+            font-weight: 700;
+            box-shadow: 0 0 0 1px rgba(239, 68, 68, 0.4);
+            animation: pulse-red 1.8s infinite;
+        }
+
+        @keyframes pulse-red {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.85;
+                transform: scale(1.08);
+            }
+        }
+
+        .component-badge.missing {
+            background-color: #f3f4f6;
+            color: #9ca3af;
+            border: 1px solid #e5e7eb;
+        }
+
+        .port-sender-sub {
+            font-size: 10px;
+            margin-left: 4px;
+        }
+
+        /* Courbes SVG */
+        path {
+            fill: none;
+            stroke-width: 2.5px;
+            stroke-linecap: round;
+            opacity: 0.85;
+            transition: stroke-width 0.2s, opacity 0.2s;
+        }
+
+        path:hover {
+            stroke-width: 4.5px;
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        path.incoherent {
+            stroke-dasharray: 6 3;
+            animation: dash 20s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -1000;
+            }
+        }
+
+        .mini-input {
+            font-size: 11px;
+            padding: 4px 10px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .mini-input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 1px #2563eb;
+        }
+
+        .lang-select {
+            font-size: 11px;
+            padding: 2px 4px;
+            border-radius: 4px;
+            border: 1px solid #d1d5db;
+            background-color: #fff;
+            cursor: pointer;
+        }

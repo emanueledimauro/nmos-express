@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="graph_virtual_page_title">Graphe NMOS - Sources & Destinations Virtuelles</title>
+
+    <script>
+        tailwind = { config: {} };
+    </script>
+    <script src="lib/js/tailwind.js"></script>
+    <script src="lib/js/jquery/jquery.min.js"></script>
+
+    <!-- Font Awesome local (offline) -->
+    <link href="lib/css/fontawesome/css/all.min.css" rel="stylesheet">
+    <link href="lib/css/tailwind.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="lib/css/nmos_graph_virtual.css?v=1.0">
+
+    <script src="lib/js/i18n.js"></script>
+    <script src="lib/js/modal.js?v=1.0"></script>
+	<script src="lib/js/menu.js?v=1.0"></script>
+    <link rel="stylesheet" href="lib/css/modal.css?v=1.0">
+</head>
+
+<body class="bg-gray-50 text-gray-800 h-screen flex flex-col p-4 font-sans select-none overflow-hidden">
+
+    <!-- HEADER -->
+    <header class="mb-3 flex justify-between items-center max-w-[100%] mx-auto w-full">
+        <div class="flex items-center gap-3">
+            <h1 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <img src="images/logo-graph.png" style="height:45px">
+
+            </h1>
+
+            <!-- Bouton bascule vers Graphe Composantes -->
+            <a href="nmos_graph.html"
+                class="ml-2 px-3 py-1.5 bg-blue-50 text-blue-700 border border-blue-200 rounded-md text-xs font-semibold hover:bg-blue-100 flex items-center gap-1.5 transition-colors shadow-sm"
+                title="Passer au graphe des composantes élémentaires (vidéo/audio/data)">
+                <i class="fas fa-stream text-blue-600"></i>
+                <span data-i18n="graph_view_elementary">Vue Composantes</span>
+            </a>
+        </div>
+
+        <div class="text-right text-xs text-gray-400 flex flex-col items-end gap-1">
+            <div class="flex items-center gap-2 relative">
+
+                <div id="menuContainer" class="relative"></div>
+            </div>
+        </div>
+    </header>
+
+    
+
+    <!-- WORKSPACE -->
+    <div id="graph-workspace">
+        <!-- TOOLBAR -->
+        <div class="mb-4 bg-white border border-gray-200 rounded-lg shadow-sm p-2 flex flex-wrap items-center gap-4">
+
+            <!-- Filter Coherence -->
+            <div class="flex items-center gap-2 border-l border-gray-200 pl-4">
+                <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider"
+                    data-i18n="graph_filter_coherence">Cohérence</span>
+                <select id="filter-coherence"
+                    class="text-xs border-none bg-gray-50 rounded px-3 py-1.5 focus:outline-none focus:ring-1 focus:ring-purple-500 cursor-pointer font-medium text-gray-700 hover:bg-gray-100 transition-colors">
+                    <option value="all" data-i18n="graph_filter_all_states">Tous les états</option>
+                    <option value="coherent" data-i18n="graph_filter_only_coherent">Uniquement cohérentes</option>
+                    <option value="incoherent" data-i18n="graph_filter_only_incoherent">Uniquement incohérentes</option>
+                </select>
+            </div>
+
+            <!-- Search Sources -->
+            <div class="flex items-center gap-2 flex-grow max-w-[200px] relative">
+                <i class="fas fa-sign-out-alt text-gray-400 absolute left-3 text-xs"></i>
+                <input id="search-sources" type="text" placeholder="Filtrer Sources..."
+                    data-i18n-placeholder="graph_filter_sources"
+                    class="w-full text-xs bg-gray-50 border border-gray-200 rounded-full pl-9 pr-4 py-1.5 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                    autocomplete="off">
+            </div>
+
+            <!-- Search Destinations -->
+            <div class="flex items-center gap-2 flex-grow max-w-[200px] relative">
+                <i class="fas fa-sign-in-alt text-gray-400 absolute left-3 text-xs"></i>
+                <input id="search-dests" type="text" placeholder="Filtrer Destinations..."
+                    data-i18n-placeholder="graph_filter_dests"
+                    class="w-full text-xs bg-gray-50 border border-gray-200 rounded-full pl-9 pr-4 py-1.5 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                    autocomplete="off">
+            </div>
+
+
+
+            <!-- Tools (Zoom, Fullscreen, Refresh) -->
+            <div class="flex items-center gap-1 ml-auto">
+                <button id="btn-zoom-out" onclick="changeZoom(-0.1)"
+                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    title="Zoom Arrière" data-i18n-title="graph_zoom_out">
+                    <i class="fas fa-minus text-xs"></i>
+                </button>
+                <button id="zoom-level" onclick="resetZoom()"
+                    class="text-xs font-medium text-gray-500 hover:text-blue-600 w-12 text-center cursor-pointer rounded py-1 hover:bg-blue-50 transition-colors"
+                    title="100%">100%</button>
+                <button id="btn-zoom-in" onclick="changeZoom(0.1)"
+                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    title="Zoom Avant" data-i18n-title="graph_zoom_in">
+                    <i class="fas fa-plus text-xs"></i>
+                </button>
+
+                <div class="w-px h-4 bg-gray-200 mx-2"></div>
+
+                <button id="btn-fullscreen" onclick="toggleFullscreen()"
+                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    title="Plein écran" data-i18n-title="graph_recenter">
+                    <i id="fullscreen-icon" class="fas fa-expand text-xs"></i>
+                </button>
+
+                <div class="w-px h-4 bg-gray-200 mx-2"></div>
+
+                <button onclick="loadData()"
+                    class="w-8 h-8 flex items-center justify-center text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-md transition-colors"
+                    title="Rafraîchir" data-i18n-title="graph_refresh">
+                    <i class="fas fa-sync-alt text-xs"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- GRAPH CANVAS -->
+        <div id="graph-container">
+            <div id="graph-canvas">
+                <svg id="connections"></svg>
+
+                <!-- Left Column: Virtual Sources -->
+                <div class="column" id="col-sources">
+                    <div class="column-header">
+                        <i class="fas fa-sign-out-alt text-emerald-600"></i>
+                        <span data-i18n="graph_virtual_sources">Sources Virtuelles</span>
+                    </div>
+                    <!-- Source Groups will be injected here -->
+                </div>
+
+                <!-- Right Column: Virtual Destinations -->
+                <div class="column" id="col-destinations">
+                    <div class="column-header">
+                        <i class="fas fa-sign-in-alt text-blue-600"></i>
+                        <span data-i18n="graph_virtual_dests">Destinations Virtuelles</span>
+                    </div>
+
+                    <!-- Bannière filtre par source active -->
+                    <div id="source-filter-banner"
+                        class="hidden mb-3 p-2 bg-emerald-50 border border-emerald-300 rounded-md text-xs text-emerald-800 flex items-center justify-between shadow-sm">
+                        <div class="flex items-center gap-1.5 truncate">
+                            <i class="fas fa-filter text-emerald-600"></i>
+                            <span>Filtré par source : <strong id="filter-src-name">...</strong></span>
+                        </div>
+                        <button onclick="g_selectedSrcId = null; renderVirtualGraph();"
+                            class="ml-2 text-xs text-emerald-700 hover:text-emerald-950 font-bold px-1.5 py-0.5 rounded hover:bg-emerald-200 transition"
+                            title="Réinitialiser le filtre">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+
+                    <!-- Destination Groups will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE COMMUTATION VIRTUELLE (TAKE) -->
+    <div id="switch-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div
+            class="bg-white rounded-xl shadow-2xl w-full max-w-lg mx-4 overflow-hidden border border-gray-200 transform transition-all">
+            <!-- Header -->
+            <div class="bg-slate-900 text-white px-5 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-layer-group text-purple-400"></i>
+                    <h3 class="font-semibold text-base" data-i18n="graph_take_virtual_title">Commutation Virtuelle</h3>
+                </div>
+                <button onclick="closeSwitchModal()" class="text-gray-400 hover:text-white transition-colors"
+                    title="Fermer">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6 space-y-4">
+                <!-- Source / Dest Summary Cards -->
+                <div
+                    class="flex items-stretch justify-between gap-3 bg-slate-50 p-4 rounded-lg border border-slate-200">
+                    <!-- Source Card -->
+                    <div class="flex-1 bg-white p-3 rounded-md border border-emerald-300 shadow-sm">
+                        <div
+                            class="text-[10px] font-bold text-emerald-600 uppercase tracking-wider mb-1 flex items-center gap-1">
+                            <i class="fas fa-sign-out-alt"></i> Source Virtuelle
+                        </div>
+                        <div id="modal-src-label" class="text-sm font-bold text-gray-800 truncate">--</div>
+                        <div id="modal-src-category" class="text-[11px] text-gray-500 truncate mt-1"></div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <div class="flex items-center justify-center text-purple-600 px-1">
+                        <i class="fas fa-arrow-right text-lg"></i>
+                    </div>
+
+                    <!-- Destination Card -->
+                    <div class="flex-1 bg-white p-3 rounded-md border border-blue-300 shadow-sm">
+                        <div
+                            class="text-[10px] font-bold text-blue-600 uppercase tracking-wider mb-1 flex items-center gap-1">
+                            <i class="fas fa-sign-in-alt"></i> Destination Virtuelle
+                        </div>
+                        <div id="modal-dst-label" class="text-sm font-bold text-gray-800 truncate">--</div>
+                        <div id="modal-dst-category" class="text-[11px] text-gray-500 truncate mt-1"></div>
+                        <div id="modal-dst-current" class="text-[10px] text-gray-400 mt-1 truncate"></div>
+                    </div>
+                </div>
+
+                <!-- Breakdown of 3 Components -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden text-xs">
+                    <div
+                        class="bg-gray-100 px-3 py-2 font-semibold text-gray-700 border-b border-gray-200 flex items-center justify-between">
+                        <span>Détail des flux à commuter</span>
+                        <span class="text-[11px] text-gray-500 font-normal">NMOS IS-05</span>
+                    </div>
+                    <div id="modal-components-list" class="divide-y divide-gray-100 bg-white">
+                        <!-- Component rows will be injected here -->
+                    </div>
+                </div>
+
+                <!-- Profile Alert (if incompatible) -->
+                <div id="modal-profile-warn"
+                    class="hidden p-3 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-xs flex items-start gap-2">
+                    <i class="fas fa-exclamation-triangle text-amber-500 mt-0.5 flex-shrink-0"></i>
+                    <div id="modal-profile-warn-text">Un ou plusieurs flux ont un profil incompatible.</div>
+                </div>
+
+                <!-- Error Box -->
+                <div id="switch-modal-error"
+                    class="hidden p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-xs flex items-start gap-2">
+                    <i class="fas fa-exclamation-circle text-red-500 mt-0.5 flex-shrink-0"></i>
+                    <div class="flex-1">
+                        <div class="font-semibold mb-0.5">Erreur de commutation</div>
+                        <div id="switch-modal-error-text" class="break-words"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="bg-gray-50 px-6 py-3.5 flex items-center justify-end gap-3 border-t border-gray-200">
+                <button id="modal-cancel-btn" onclick="closeSwitchModal()" type="button"
+                    class="px-4 py-2 text-xs font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100 transition-colors">
+                    Fermer
+                </button>
+                <button id="modal-take-btn" onclick="handleModalTake()" type="button"
+                    class="px-5 py-2 text-xs font-bold text-white bg-purple-600 rounded-md hover:bg-purple-700 shadow transition-colors flex items-center gap-2">
+                    <i class="fas fa-bolt"></i> TAKE
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT LOGIC -->
+    <script src="lib/js/nmos_graph_virtual.js?v=1.0"></script>
+</body>
+
+</html>

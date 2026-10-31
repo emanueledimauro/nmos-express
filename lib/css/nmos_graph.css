@@ -1,0 +1,323 @@
+/**
+ * NMOS Express - Graph Visualizer (nmos_graph.html)
+ */
+
+/* --- GRAPH STYLES --- */
+        #graph-workspace {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            min-height: 0;
+        }
+
+        #graph-workspace:fullscreen {
+            background-color: #f9fafb;
+            padding: 1.5rem;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #graph-container {
+            display: flex;
+            position: relative;
+            background-color: #fafafa;
+            /* LIGHT THEME */
+            flex-grow: 1;
+            border-radius: 8px;
+            overflow-y: auto;
+            overflow-x: auto;
+            min-height: 600px;
+            border: 1px solid #e5e7eb;
+        }
+
+        #graph-canvas {
+            display: flex;
+            position: relative;
+            width: 100%;
+            min-height: 100%;
+            transform-origin: 0 0;
+        }
+
+        /* SVG Layer pour les liens */
+        #connections {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding: 20px;
+            min-width: 380px;
+            z-index: 2;
+        }
+
+        #col-receivers {
+            align-items: flex-end;
+        }
+
+        #col-senders {
+            align-items: flex-start;
+        }
+
+        .column-header {
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 12px;
+            color: #4b5563;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 6px 12px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .node {
+            background-color: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px;
+            color: #1f2937;
+            position: relative;
+            font-size: 13px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            width: 380px;
+            box-sizing: border-box;
+            transition: transform 0.15s, border-color 0.15s, box-shadow 0.15s;
+        }
+
+        .node:hover {
+            border-color: #9ca3af;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+        }
+
+        .node-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 13px;
+            color: #374151;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .ports-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .inputs,
+        .outputs {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 100%;
+        }
+
+        .port {
+            background-color: white;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 6px 10px;
+            font-size: 12px;
+            cursor: pointer;
+            position: relative;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            box-sizing: border-box;
+            transition: all 0.15s ease-in-out;
+        }
+
+        .port:hover {
+            background-color: #f0fdf4;
+            border-color: #10b981;
+            color: #065f46;
+        }
+
+        .port-sender-sub {
+            color: #6b7280;
+            font-size: 11px;
+            font-weight: normal;
+        }
+
+        .port:hover .port-sender-sub {
+            color: #047857;
+        }
+
+        .port.output.selected-source,
+        .port.output.selected-source:hover {
+            background-color: #059669 !important;
+            border-color: #047857 !important;
+            color: #ffffff !important;
+            font-weight: 600;
+            box-shadow: 0 0 0 2px rgba(5, 150, 105, 0.45);
+        }
+
+        .port.output.selected-source span {
+            color: #ffffff !important;
+        }
+
+        .port.output.selected-source .anchor {
+            background-color: #047857 !important;
+            box-shadow: 0 0 0 2px #34d399;
+        }
+
+        .port.output.selected-source i {
+            color: #d1fae5 !important;
+        }
+
+        /* Destination sélectionnée (bleu) */
+        .port.input.selected-dest,
+        .port.input.selected-dest:hover {
+            background-color: #2563eb !important;
+            border-color: #1d4ed8 !important;
+            color: #ffffff !important;
+            font-weight: 600;
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.45);
+        }
+
+        .port.input.selected-dest span {
+            color: #ffffff !important;
+        }
+
+        .port.input.selected-dest .anchor {
+            background-color: #1d4ed8 !important;
+            box-shadow: 0 0 0 2px #93c5fd;
+        }
+
+        .port.input.selected-dest .port-sender-sub {
+            color: #bfdbfe !important;
+        }
+
+        .port.input.selected-dest i {
+            color: #dbeafe !important;
+        }
+
+        /* Indication visuelle sur les sources compatibles quand une destination est sélectionnée */
+        body.dest-selected .port.output {
+            border-color: #10b981;
+            box-shadow: 0 0 0 1px rgba(16, 185, 129, 0.35);
+            cursor: pointer;
+        }
+
+        body.dest-selected .port.output:hover {
+            background-color: #ecfdf5;
+            border-color: #059669;
+            color: #047857;
+            transform: scale(1.02);
+        }
+
+        .node.selected-source,
+        .node.selected-source:hover {
+            background-color: #dcfce7;
+            border-color: #22c55e;
+            box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+        }
+
+        .node.selected-source .node-title {
+            color: #15803d;
+            border-bottom-color: #86efac;
+            font-weight: 600;
+        }
+
+        /* Points d'ancrage visuels */
+        .anchor {
+            width: 8px;
+            height: 8px;
+            background-color: #6b7280;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            margin-top: -4px;
+            transition: all 0.15s;
+        }
+
+        .port.input .anchor {
+            left: -4px;
+        }
+
+        .port.output .anchor {
+            right: -4px;
+        }
+
+        .column-senders .port.output {
+            justify-content: space-between;
+        }
+
+        .column-receivers .port.input {
+            justify-content: space-between;
+        }
+
+        path {
+            fill: none;
+            stroke: var(--link-color);
+            stroke-width: 2px;
+            stroke-opacity: var(--link-opacity);
+            transition: stroke-width 0.2s, stroke 0.2s;
+        }
+
+        path:hover {
+            stroke-width: 4px;
+            stroke: #fff;
+            stroke-opacity: 1;
+            z-index: 100;
+        }
+
+        /* --- INPUTS matched from index.html --- */
+        .mini-input {
+            font-size: 11px;
+            padding: 4px 24px 4px 8px;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            width: 100%;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .mini-input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 1px #2563eb;
+        }
+
+        /* Les nodes doivent grandir, jamais scroller */
+        .node {
+            height: auto !important;
+            max-height: none !important;
+            overflow: visible !important;
+        }
+
+        /* Les colonnes de ports ne doivent pas scroller non plus */
+        .ports-container,
+        .inputs,
+        .outputs {
+            max-height: none !important;
+            overflow: visible !important;
+        }
+
+        .lang-select {
+            font-size: 13px;
+            padding: 4px 6px;
+            border-radius: 6px;
+            border: 1px solid #d1d5db;
+            background-color: #fff;
+            cursor: pointer;
+        }

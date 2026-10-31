@@ -1,0 +1,47 @@
+# =======================================================
+# NMOS Express - .gitignore
+# =======================================================
+
+# Private network topologies & physical equipment backups
+# Prevents exposing real facility IP addresses and private serials
+*.real.json
+json/
+
+# Scratch scripts, temporary files & backups
+scratch/
+*.tmp
+*.bak
+*.old
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+[Dd]esktop.ini
+
+# IDE, editors & workspaces
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# PHP & Web Server logs
+*.log
+error_log
+php_errors.log
+
+# Python cache & virtual environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.venv/
+env/
+venv/

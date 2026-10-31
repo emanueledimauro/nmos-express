@@ -1,0 +1,156 @@
+/**
+ * NMOS Express - Workflow Automation (workflow.html)
+ */
+
+/* Aligné avec le style des autres pages */
+    .mini-input {
+      font-size: 11px;
+      padding: 4px 24px 4px 8px;
+      border: 1px solid #d1d5db;
+      border-radius: 9999px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+      background: #f9fafb;
+    }
+
+    .mini-input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px #2563eb;
+    }
+
+    .panel {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      background: white;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+      min-height: 560px;
+    }
+
+    .list-item.active {
+      background: #eff6ff;
+      border-left: 4px solid #2563eb;
+    }
+
+    .list-item:hover {
+      background: #f8fafc;
+    }
+
+    .table-input {
+      font-size: 12px;
+      padding: 6px 8px;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      width: 100%;
+      outline: none;
+      background: #fff;
+    }
+
+    .table-input:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px #2563eb;
+    }
+
+    .codebox {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 11px;
+      line-height: 1.35;
+      background: #0b1220;
+      color: #c7d2fe;
+      border-radius: 10px;
+      padding: 10px 12px;
+      overflow: auto;
+      height: 240px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      white-space: pre;
+    }
+
+    /* Toast container */
+    #wf-toast {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-width: 380px;
+      pointer-events: none;
+    }
+
+    .wf-toast-item {
+      pointer-events: auto;
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: #0b1220;
+      color: #e5e7eb;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-left-width: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wf-toast-item .title {
+      font-weight: 700;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .wf-toast-item .close {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      border: none;
+      background: transparent;
+      color: #e5e7eb;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .wf-toast-item.success {
+      border-left-color: #16a34a;
+    }
+
+    .wf-toast-item.success .title {
+      color: #86efac;
+    }
+
+    .wf-toast-item.error {
+      border-left-color: #ef4444;
+    }
+
+    .wf-toast-item.error .title {
+      color: #fecaca;
+    }
+
+    .wf-toast-item.warning {
+      border-left-color: #f59e0b;
+    }
+
+    .wf-toast-item.warning .title {
+      color: #fde68a;
+    }
+
+    /* Résultats validation */
+    .pill {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+      color: #6b7280;
+    }
+
+    .pill.ok {
+      background: #ecfdf5;
+      border-color: #bbf7d0;
+      color: #166534;
+    }
+
+    .pill.ko {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #991b1b;
+    }
